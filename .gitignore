@@ -1,3 +1,11 @@
 node_modules/
 build/
+.vs/
+bin/
+obj/
 .DS_Store
+
+*.njsproj
+*.njsproj.user
+*.sln
+
