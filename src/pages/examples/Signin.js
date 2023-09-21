@@ -11,6 +11,9 @@ import BgImage from "../../assets/img/illustrations/signin.svg";
 
 
 export default () => {
+  const handleSubmit = () => {
+    alert("Signin for submit pressed");
+  };
   return (
     <main>
       <section className="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
@@ -26,7 +29,7 @@ export default () => {
                 <div className="text-center text-md-center mb-4 mt-md-0">
                   <h3 className="mb-0">Sign in to our platform</h3>
                 </div>
-                <Form className="mt-4">
+                <Form className="mt-4" onSubmit={ handleSubmit }>
                   <Form.Group id="email" className="mb-4">
                     <Form.Label>Your Email</Form.Label>
                     <InputGroup>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
 import { Routes } from "../routes";
 
@@ -49,13 +49,16 @@ import Tabs from "./components/Tabs";
 import Tooltips from "./components/Tooltips";
 import Toasts from "./components/Toasts";
 
-const RouteWithLoader = ({ component: Component, ...rest }) => {
-  const [loaded, setLoaded] = useState(false);
+import "../scss/volt.scss"
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 1000);
-    return () => clearTimeout(timer);
-  }, []);
+
+const RouteWithLoader = ({ component: Component, ...rest }) => {
+  const [loaded, setLoaded] = useState(true);
+
+  //useEffect(() => {
+    //const timer = setTimeout(() => setLoaded(true), 1000);
+    //return () => clearTimeout(timer);
+  //}, []);
 
   return (
     <Route {...rest} render={props => ( <> <Preloader show={loaded ? false : true} /> <Component {...props} /> </> ) } />
@@ -63,12 +66,12 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
 };
 
 const RouteWithSidebar = ({ component: Component, ...rest }) => {
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 1000);
-    return () => clearTimeout(timer);
-  }, []);
+  //useEffect(() => {
+    //const timer = setTimeout(() => setLoaded(true), 1000);
+    //return () => clearTimeout(timer);
+  //}, []);
 
   const localStorageIsSettingsVisible = () => {
     return localStorage.getItem('settingsVisible') === 'false' ? false : true

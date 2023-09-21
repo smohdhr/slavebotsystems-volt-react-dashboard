@@ -1,33 +1,44 @@
-import path from 'path';
-import fs from 'fs';
+//import path from 'path';
+//import fs from 'fs';
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { Routes } from '../src/routes.js';
 import express from 'express';
+//import dns from 'dns';
 
-import App from '../src/App';
+import Main from '../src/main.js';
 
-const PORT = process.env.PORT || 3006;
+const HOST = process.env.SERVER_HOST || "0.0.0.0";
+const PORT = process.env.SERVER_PORT || 3106;
+
+function reactHandler(req, res) {
+  let content = ReactDOMServer.renderToString(
+    <Main location={req.url} />
+  );
+  if (content == null) {
+    res.status(500).send('Error occured: ' + err);
+  } else {
+    content = '<!DOCTYPE html>' + content.replace(/%PUBLIC_URL%/g, './');
+    res.send(content);
+  }
+}
+
+function createReactRouting(app) {
+  for (const [key, value] of Object.entries(Routes)) {
+    let path = value.path;
+    app.get(path, reactHandler);
+  }
+}
+
 const app = express();
 
-app.get('/', (req, res) => {
-  const app = ReactDOMServer.renderToString(<App />);
-  const indexFile = path.resolve('./build/index.html');
+createReactRouting(app);
 
-  fs.readFile(indexFile, 'utf8', (err, data) => {
-    if (err) {
-      console.error('Something went wrong:', err);
-      return res.status(500).send('Oops, better luck next time!');
-    }
-
-    return res.send(
-      data.replace('<div id="root"></div>', `<div id="root">${app}</div>`)
-    );
-  });
-});
-
-app.use(express.static('./public'));
+// midleware
+app.use(express.static('public'));
+app.use(express.static('server-build'));
 
 app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+  console.log(`Server is listening on ${HOST} at port ${PORT}`);
 });

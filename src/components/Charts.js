@@ -1,7 +1,17 @@
 
 import React from "react";
+/*
+//
+// These imports use the global 'window' object and cause problems at startup
+//
 import Chartist from "react-chartist";
 import ChartistTooltip from 'chartist-plugin-tooltips-updated';
+*/
+
+import { canUseDOM } from 'exenv';
+const Chartist = canUseDOM ? require('react-chartist') : <div />;
+const ChartistTooltip = canUseDOM ? require('chartist-plugin-tooltips-updated') : <div />;
+
 
 export const SalesValueChart = () => {
   const data = {
