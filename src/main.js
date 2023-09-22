@@ -44,7 +44,7 @@ export default function Main(options) {
 
       <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
-        <div id="root" onLoad="hydrate()">
+        <div id="root" onLoad={'hydrate("'+options.location+'")'}>
           <App location={options.location} />
         </div>
       </body>

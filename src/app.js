@@ -9,10 +9,20 @@ import { StaticRouter } from 'react-router-dom';
  * give control of the initial page to the jsx engine
  */
 export default function App(options) {
-  return (
-    <StaticRouter location={options.location}>
-      <ScrollToTop />
-      <HomePage />
-    </StaticRouter>
-  );
+  if (options.hydrate === true) {
+    return (
+      <BrowserRouter location={options.location}>
+        <ScrollToTop />
+        <HomePage hydrate={true} />
+      </BrowserRouter>
+    );
+  }
+  else {
+    return (
+      <StaticRouter location={options.location}>
+        <ScrollToTop />
+        <HomePage hydrate={false} />
+      </StaticRouter>
+    );
+  }
 }

@@ -4,7 +4,6 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import express from 'express';
 //import fs from 'fs';
-//import { Routes } from '../src/routes.js';
 //import dns from 'dns';
 
 import Main from '../src/main.js';
@@ -13,27 +12,19 @@ const HOST = process.env.SERVER_HOST || "0.0.0.0";
 const PORT = process.env.SERVER_PORT || 3106;
 
 function reactHandler(req, res) {
+  console.log(`handling request ${req.url}`);
   let content = ReactDOMServer.renderToString(
     <Main location={req.url} />
   );
   if (content == null) {
     res.status(500).send('Error occured: ' + err);
   } else {
-    content = '<!DOCTYPE html>' + content.replace(/%PUBLIC_URL%/g, './');
+    content = '<!DOCTYPE html>' + content.replace(/%PUBLIC_URL%/g, '/public');
     res.send(content);
   }
 }
 
-//function createReactRouting(app) {
-//  for (const [key, value] of Object.entries(Routes)) {
-//    let path = value.path;
-//    app.get(path, reactHandler);
-//  }
-//}
-
 const app = express();
-
-//createReactRouting(app);
 
 const static_public_path = path.join(__dirname, '..', 'public');
 const static_serverbuild_path = path.join(__dirname, '..', 'server-build');
