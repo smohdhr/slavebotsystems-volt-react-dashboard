@@ -1,4 +1,4 @@
-//import path from 'path';
+import path from 'path';
 //import fs from 'fs';
 
 import React from 'react';
@@ -35,9 +35,12 @@ const app = express();
 
 createReactRouting(app);
 
+const static_public_path = path.join(__dirname, '..', 'public');
+const static_serverbuild_path = path.join(__dirname, '..', 'server-build');
+
 // midleware
-app.use(express.static('public'));
-app.use(express.static('server-build'));
+app.use('/public', express.static(static_public_path));
+app.use('/server-build', express.static(static_serverbuild_path));
 
 app.listen(PORT, () => {
   console.log(`Server is listening on ${HOST} at port ${PORT}`);

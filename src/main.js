@@ -16,7 +16,7 @@ export default function Main(options) {
         <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
-        <link rel="stylesheet" type="text/css" href="main.css" />
+        <link rel="stylesheet" type="text/css" href="/server-build/main.css" />
         <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
         <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#262b40" />
         <meta name="msapplication-TileColor" content="#ff0000" />
@@ -38,7 +38,7 @@ export default function Main(options) {
         <meta property="twitter:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-react-dashboard/thumbnail.png" />
 
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-        <script src='client.js' type='application/javascript' />
+        <script src='/public/client.js' type='application/javascript' />
         <title>Volt React Dashboard</title>
       </head>
 
