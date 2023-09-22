@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CompiledExtractPlugin } = require('@compiled/webpack-loader');
 
 module.exports = {
-  entry: './server/index.js',
+  entry: './src/server.js',
   target: 'node',
   output: {
     path: path.resolve('server-build'),

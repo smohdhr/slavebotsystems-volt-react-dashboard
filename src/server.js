@@ -6,13 +6,13 @@ import express from 'express';
 //import fs from 'fs';
 //import dns from 'dns';
 
-import Main from '../src/main.js';
+import Main from './main.js';
 
 const HOST = process.env.SERVER_HOST || "0.0.0.0";
 const PORT = process.env.SERVER_PORT || 3106;
 
 function reactHandler(req, res) {
-  console.log(`handling request ${req.url}`);
+  //console.log(`handling request ${req.url}`);
   let content = ReactDOMServer.renderToString(
     <Main location={req.url} />
   );
