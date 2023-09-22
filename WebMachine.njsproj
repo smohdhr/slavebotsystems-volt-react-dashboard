@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{f965758e-b519-4e84-be3c-56b3ccbc42da}</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectView>ProjectFiles</ProjectView>
+    <StartupFile>node_modules\react-scripts\scripts\start.js</StartupFile>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">16.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <StartWebBrowser>True</StartWebBrowser>
+    <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
+    <NodejsPort>3000</NodejsPort>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <ItemGroup>
+    <Content Include=".babelrc.json" />
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <Content Include="LICENSE.md" />
+    <Content Include="public\site.webmanifest" />
+    <Content Include="README.md" />
+    <Content Include="public\robots.txt" />
+    <Content Include="public\android-chrome-192x192.png" />
+    <Content Include="public\android-chrome-512x512.png" />
+    <Content Include="public\apple-touch-icon.png" />
+    <Content Include="public\favicon-16x16.png" />
+    <Content Include="public\favicon-32x32.png" />
+    <Content Include="public\mstile-150x150.png" />
+    <Content Include="public\favicon.ico" />
+    <Content Include="public\safari-pinned-tab.svg" />
+    <Content Include="public\manifest.json" />
+    <Content Include="public\browserconfig.xml" />
+    <Content Include="src\main.js" />
+    <Content Include="src\app.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\client.js" />
+    <Content Include="src\routes.js" />
+    <Content Include="obj\Debug\WebMachine1.njsproj.FileListAbsolute.txt" />
+    <Content Include="src\components\AccordionComponent.js" />
+    <Content Include="src\components\Charts.js" />
+    <Content Include="src\components\Code.js" />
+    <Content Include="src\components\CodeEditor.js" />
+    <Content Include="src\components\Documentation.js" />
+    <Content Include="src\components\Footer.js" />
+    <Content Include="src\components\Forms.js" />
+    <Content Include="src\components\Navbar.js" />
+    <Content Include="src\components\Preloader.js" />
+    <Content Include="src\components\Progress.js" />
+    <Content Include="src\components\ScrollToTop.js" />
+    <Content Include="src\components\Sidebar.js" />
+    <Content Include="src\components\Tables.js" />
+    <Content Include="src\components\Widgets.js" />
+    <Content Include="src\data\charts.js" />
+    <Content Include="src\data\commands.js" />
+    <Content Include="src\data\features.js" />
+    <Content Include="src\data\notifications.js" />
+    <Content Include="src\data\pages.js" />
+    <Content Include="src\data\tables.js" />
+    <Content Include="src\data\teamMembers.js" />
+    <Content Include="src\data\transactions.js" />
+    <Content Include="src\pages\HomePage.js" />
+    <Content Include="src\pages\Presentation.js" />
+    <Content Include="src\pages\Settings.js" />
+    <Content Include="src\pages\Transactions.js" />
+    <Content Include="src\pages\Upgrade.js" />
+    <Content Include="src\assets\img\mapbox-token-create.png" />
+    <Content Include="src\assets\img\mockup-calendar-presentation.png" />
+    <Content Include="src\assets\img\mockup-map-presentation.png" />
+    <Content Include="src\assets\img\mockup-presentation.png" />
+    <Content Include="src\assets\img\react-mockup.png" />
+    <Content Include="src\assets\img\profile-cover.jpg" />
+    <Content Include="src\assets\img\react-mockup.jpg" />
+    <Content Include="src\assets\img\marker.svg" />
+    <Content Include="src\assets\img\paypal-logo.svg" />
+    <Content Include="src\assets\img\themesberg-logo.svg" />
+    <Content Include="src\assets\img\themesberg.svg" />
+    <Content Include="src\assets\syntax-themes\ghcolors.json" />
+    <Content Include="src\assets\syntax-themes\xonokai.json" />
+    <Content Include="src\assets\img\brand\dark.svg" />
+    <Content Include="src\assets\img\brand\light.svg" />
+    <Content Include="src\assets\img\favicon\android-chrome-192x192.png" />
+    <Content Include="src\assets\img\favicon\android-chrome-512x512.png" />
+    <Content Include="src\assets\img\favicon\apple-touch-icon.png" />
+    <Content Include="src\assets\img\favicon\favicon-16x16.png" />
+    <Content Include="src\assets\img\favicon\favicon-32x32.png" />
+    <Content Include="src\assets\img\favicon\mstile-150x150.png" />
+    <Content Include="src\assets\img\favicon\favicon.ico" />
+    <Content Include="src\assets\img\favicon\safari-pinned-tab.svg" />
+    <Content Include="src\assets\img\favicon\manifest.json" />
+    <Content Include="src\assets\img\favicon\browserconfig.xml" />
+    <Content Include="src\assets\img\flags\aland-islands.svg" />
+    <Content Include="src\assets\img\flags\albania.svg" />
+    <Content Include="src\assets\img\flags\algeria.svg" />
+    <Content Include="src\assets\img\flags\american-samoa.svg" />
+    <Content Include="src\assets\img\flags\anguilla.svg" />
+    <Content Include="src\assets\img\flags\argentina.svg" />
+    <Content Include="src\assets\img\flags\armenia.svg" />
+    <Content Include="src\assets\img\flags\australia.svg" />
+    <Content Include="src\assets\img\flags\austria.svg" />
+    <Content Include="src\assets\img\flags\azerbaijan.svg" />
+    <Content Include="src\assets\img\flags\bahrain.svg" />
+    <Content Include="src\assets\img\flags\belarus.svg" />
+    <Content Include="src\assets\img\flags\belgium.svg" />
+    <Content Include="src\assets\img\flags\bolivia.svg" />
+    <Content Include="src\assets\img\flags\bosnia-and-herzegovina.svg" />
+    <Content Include="src\assets\img\flags\botswana.svg" />
+    <Content Include="src\assets\img\flags\brazil.svg" />
+    <Content Include="src\assets\img\flags\bulgaria.svg" />
+    <Content Include="src\assets\img\flags\cambodia.svg" />
+    <Content Include="src\assets\img\flags\cameroon.svg" />
+    <Content Include="src\assets\img\flags\canada.svg" />
+    <Content Include="src\assets\img\flags\chile.svg" />
+    <Content Include="src\assets\img\flags\china.svg" />
+    <Content Include="src\assets\img\flags\colombia.svg" />
+    <Content Include="src\assets\img\flags\costa-rica.svg" />
+    <Content Include="src\assets\img\flags\croatia.svg" />
+    <Content Include="src\assets\img\flags\cuba.svg" />
+    <Content Include="src\assets\img\flags\cyprus.svg" />
+    <Content Include="src\assets\img\flags\czech-republic.svg" />
+    <Content Include="src\assets\img\flags\denmark.svg" />
+    <Content Include="src\assets\img\flags\ecuador.svg" />
+    <Content Include="src\assets\img\flags\egypt.svg" />
+    <Content Include="src\assets\img\flags\estonia.svg" />
+    <Content Include="src\assets\img\flags\ethiopia.svg" />
+    <Content Include="src\assets\img\flags\finland.svg" />
+    <Content Include="src\assets\img\flags\france.svg" />
+    <Content Include="src\assets\img\flags\georgia.svg" />
+    <Content Include="src\assets\img\flags\germany.svg" />
+    <Content Include="src\assets\img\flags\greece.svg" />
+    <Content Include="src\assets\img\flags\haiti.svg" />
+    <Content Include="src\assets\img\flags\hong-kong.svg" />
+    <Content Include="src\assets\img\flags\hungary.svg" />
+    <Content Include="src\assets\img\flags\iceland.svg" />
+    <Content Include="src\assets\img\flags\india.svg" />
+    <Content Include="src\assets\img\flags\indonesia.svg" />
+    <Content Include="src\assets\img\flags\iran.svg" />
+    <Content Include="src\assets\img\flags\iraq.svg" />
+    <Content Include="src\assets\img\flags\ireland.svg" />
+    <Content Include="src\assets\img\flags\israel.svg" />
+    <Content Include="src\assets\img\flags\italy.svg" />
+    <Content Include="src\assets\img\flags\ivory-coast.svg" />
+    <Content Include="src\assets\img\flags\japan.svg" />
+    <Content Include="src\assets\img\flags\kazakhstan.svg" />
+    <Content Include="src\assets\img\flags\kuwait.svg" />
+    <Content Include="src\assets\img\flags\latvia.svg" />
+    <Content Include="src\assets\img\flags\liechtenstein.svg" />
+    <Content Include="src\assets\img\flags\lithuania.svg" />
+    <Content Include="src\assets\img\flags\luxembourg.svg" />
+    <Content Include="src\assets\img\flags\malaysia.svg" />
+    <Content Include="src\assets\img\flags\mexico.svg" />
+    <Content Include="src\assets\img\flags\mongolia.svg" />
+    <Content Include="src\assets\img\flags\montenegro.svg" />
+    <Content Include="src\assets\img\flags\nauru.svg" />
+    <Content Include="src\assets\img\flags\netherlands.svg" />
+    <Content Include="src\assets\img\flags\nicaragua.svg" />
+    <Content Include="src\assets\img\flags\nigeria.svg" />
+    <Content Include="src\assets\img\flags\norway.svg" />
+    <Content Include="src\assets\img\flags\pakistan.svg" />
+    <Content Include="src\assets\img\flags\panama.svg" />
+    <Content Include="src\assets\img\flags\paraguay.svg" />
+    <Content Include="src\assets\img\flags\peru.svg" />
+    <Content Include="src\assets\img\flags\philippines.svg" />
+    <Content Include="src\assets\img\flags\portugal.svg" />
+    <Content Include="src\assets\img\flags\puerto-rico.svg" />
+    <Content Include="src\assets\img\flags\republic-of-macedonia.svg" />
+    <Content Include="src\assets\img\flags\republic-of-poland.svg" />
+    <Content Include="src\assets\img\flags\romania.svg" />
+    <Content Include="src\assets\img\flags\russia.svg" />
+    <Content Include="src\assets\img\flags\serbia.svg" />
+    <Content Include="src\assets\img\flags\singapore.svg" />
+    <Content Include="src\assets\img\flags\slovakia.svg" />
+    <Content Include="src\assets\img\flags\slovenia.svg" />
+    <Content Include="src\assets\img\flags\south-africa.svg" />
+    <Content Include="src\assets\img\flags\south-korea.svg" />
+    <Content Include="src\assets\img\flags\spain.svg" />
+    <Content Include="src\assets\img\flags\sri-lanka.svg" />
+    <Content Include="src\assets\img\flags\sweden.svg" />
+    <Content Include="src\assets\img\flags\switzerland.svg" />
+    <Content Include="src\assets\img\flags\taiwan.svg" />
+    <Content Include="src\assets\img\flags\thailand.svg" />
+    <Content Include="src\assets\img\flags\tunisia.svg" />
+    <Content Include="src\assets\img\flags\turkey.svg" />
+    <Content Include="src\assets\img\flags\ukraine.svg" />
+    <Content Include="src\assets\img\flags\united-arab-emirates.svg" />
+    <Content Include="src\assets\img\flags\united-kingdom.svg" />
+    <Content Include="src\assets\img\flags\united-states-of-america.svg" />
+    <Content Include="src\assets\img\flags\united-states.svg" />
+    <Content Include="src\assets\img\flags\uruguay.svg" />
+    <Content Include="src\assets\img\flags\venezuela.svg" />
+    <Content Include="src\assets\img\flags\vietnam.svg" />
+    <Content Include="src\assets\img\icons\github.svg" />
+    <Content Include="src\assets\img\icons\google-tag-manager.svg" />
+    <Content Include="src\assets\img\icons\google_analytics.svg" />
+    <Content Include="src\assets\img\illustrations\404.svg" />
+    <Content Include="src\assets\img\illustrations\500.svg" />
+    <Content Include="src\assets\img\illustrations\bs5-illustrations.svg" />
+    <Content Include="src\assets\img\illustrations\signin.svg" />
+    <Content Include="src\assets\img\pages\404.jpg" />
+    <Content Include="src\assets\img\pages\500.jpg" />
+    <Content Include="src\assets\img\pages\forgot-password.jpg" />
+    <Content Include="src\assets\img\pages\lock.jpg" />
+    <Content Include="src\assets\img\pages\overview.jpg" />
+    <Content Include="src\assets\img\pages\reset-password.jpg" />
+    <Content Include="src\assets\img\pages\settings.jpg" />
+    <Content Include="src\assets\img\pages\sign-in.jpg" />
+    <Content Include="src\assets\img\pages\sign-up.jpg" />
+    <Content Include="src\assets\img\pages\transactions.jpg" />
+    <Content Include="src\assets\img\team\profile-picture-1.jpg" />
+    <Content Include="src\assets\img\team\profile-picture-2.jpg" />
+    <Content Include="src\assets\img\team\profile-picture-3.jpg" />
+    <Content Include="src\assets\img\team\profile-picture-4.jpg" />
+    <Content Include="src\assets\img\team\profile-picture-5.jpg" />
+    <Content Include="src\assets\img\team\profile-picture-6.jpg" />
+    <Content Include="src\assets\img\team\profile-picture-freelancer.jpg" />
+    <Content Include="src\assets\img\technologies\bootstrap-5-logo.svg" />
+    <Content Include="src\assets\img\technologies\laravel-logo.svg" />
+    <Content Include="src\assets\img\technologies\react-hero-logo.svg" />
+    <Content Include="src\assets\img\technologies\react-logo-primary.svg" />
+    <Content Include="src\assets\img\technologies\react-logo-transparent.svg" />
+    <Content Include="src\assets\img\technologies\react-logo.svg" />
+    <Content Include="src\assets\img\technologies\vuejs-logo.svg" />
+    <Content Include="src\pages\components\Accordion.js" />
+    <Content Include="src\pages\components\Alerts.js" />
+    <Content Include="src\pages\components\Badges.js" />
+    <Content Include="src\pages\components\Breadcrumbs.js" />
+    <Content Include="src\pages\components\Buttons.js" />
+    <Content Include="src\pages\components\Forms.js" />
+    <Content Include="src\pages\components\Modals.js" />
+    <Content Include="src\pages\components\Navbars.js" />
+    <Content Include="src\pages\components\Navs.js" />
+    <Content Include="src\pages\components\Pagination.js" />
+    <Content Include="src\pages\components\Popovers.js" />
+    <Content Include="src\pages\components\Progress.js" />
+    <Content Include="src\pages\components\Tables.js" />
+    <Content Include="src\pages\components\Tabs.js" />
+    <Content Include="src\pages\components\Toasts.js" />
+    <Content Include="src\pages\components\Tooltips.js" />
+    <Content Include="src\pages\dashboard\DashboardOverview.js" />
+    <Content Include="src\pages\documentation\DocsBuild.js" />
+    <Content Include="src\pages\documentation\DocsChangelog.js" />
+    <Content Include="src\pages\documentation\DocsDownload.js" />
+    <Content Include="src\pages\documentation\DocsFolderStructure.js" />
+    <Content Include="src\pages\documentation\DocsLicense.js" />
+    <Content Include="src\pages\documentation\DocsOverview.js" />
+    <Content Include="src\pages\documentation\DocsQuickStart.js" />
+    <Content Include="src\pages\examples\ForgotPassword.js" />
+    <Content Include="src\pages\examples\Lock.js" />
+    <Content Include="src\pages\examples\NotFound.js" />
+    <Content Include="src\pages\examples\ResetPassword.js" />
+    <Content Include="src\pages\examples\ServerError.js" />
+    <Content Include="src\pages\examples\Signin.js" />
+    <Content Include="src\pages\examples\Signup.js" />
+    <Content Include="src\pages\tables\BootstrapTables.js" />
+    <Content Include="src\scss\volt.scss" />
+    <Content Include="src\scss\volt\components\_accordions.scss" />
+    <Content Include="src\scss\volt\components\_alerts.scss" />
+    <Content Include="src\scss\volt\components\_avatars.scss" />
+    <Content Include="src\scss\volt\components\_badge.scss" />
+    <Content Include="src\scss\volt\components\_blog-cards.scss" />
+    <Content Include="src\scss\volt\components\_breadcrumb.scss" />
+    <Content Include="src\scss\volt\components\_buttons.scss" />
+    <Content Include="src\scss\volt\components\_card.scss" />
+    <Content Include="src\scss\volt\components\_carousel.scss" />
+    <Content Include="src\scss\volt\components\_charts.scss" />
+    <Content Include="src\scss\volt\components\_close.scss" />
+    <Content Include="src\scss\volt\components\_counters.scss" />
+    <Content Include="src\scss\volt\components\_custom-forms.scss" />
+    <Content Include="src\scss\volt\components\_datepicker.scss" />
+    <Content Include="src\scss\volt\components\_dropdown.scss" />
+    <Content Include="src\scss\volt\components\_dropzone.scss" />
+    <Content Include="src\scss\volt\components\_forms.scss" />
+    <Content Include="src\scss\volt\components\_icon-box.scss" />
+    <Content Include="src\scss\volt\components\_images.scss" />
+    <Content Include="src\scss\volt\components\_input-group.scss" />
+    <Content Include="src\scss\volt\components\_list-group.scss" />
+    <Content Include="src\scss\volt\components\_modal.scss" />
+    <Content Include="src\scss\volt\components\_nav.scss" />
+    <Content Include="src\scss\volt\components\_pagination.scss" />
+    <Content Include="src\scss\volt\components\_popover.scss" />
+    <Content Include="src\scss\volt\components\_preloader.scss" />
+    <Content Include="src\scss\volt\components\_pricing-cards.scss" />
+    <Content Include="src\scss\volt\components\_progress.scss" />
+    <Content Include="src\scss\volt\components\_scrollbar.scss" />
+    <Content Include="src\scss\volt\components\_shapes.scss" />
+    <Content Include="src\scss\volt\components\_tables.scss" />
+    <Content Include="src\scss\volt\components\_timelines.scss" />
+    <Content Include="src\scss\volt\components\_tooltip.scss" />
+    <Content Include="src\scss\volt\components\_type.scss" />
+    <Content Include="src\scss\volt\layout\_footer.scss" />
+    <Content Include="src\scss\volt\layout\_navbar.scss" />
+    <Content Include="src\scss\volt\layout\_section.scss" />
+    <Content Include="src\scss\volt\layout\_sidebar.scss" />
+    <Content Include="src\scss\volt\layout\_sidenav.scss" />
+    <Content Include="src\scss\volt\mixins\_animations.scss" />
+    <Content Include="src\scss\volt\mixins\_background-variant.scss" />
+    <Content Include="src\scss\volt\mixins\_icon.scss" />
+    <Content Include="src\scss\volt\mixins\_modals.scss" />
+    <Content Include="src\scss\volt\mixins\_popover.scss" />
+    <Content Include="src\scss\volt\mixins\_transform.scss" />
+    <Content Include="src\scss\volt\mixins\_utilities.scss" />
+    <Content Include="src\scss\volt\themes\_variables-dark.scss" />
+    <Content Include="src\scss\volt\themes\_variables-light.scss" />
+    <Content Include="src\scss\volt\themes\_variables-sunset.scss" />
+    <Content Include="src\scss\volt\utilities\_animations.scss" />
+    <Content Include="src\scss\volt\utilities\_backgrounds.scss" />
+    <Content Include="src\scss\volt\utilities\_helper.scss" />
+    <Content Include="src\scss\volt\utilities\_position.scss" />
+    <Content Include="src\scss\volt\utilities\_shadows.scss" />
+    <Content Include="src\scss\volt\utilities\_sizing.scss" />
+    <Content Include="src\scss\volt\utilities\_text.scss" />
+    <Content Include="src\scss\volt\utilities\_transform.scss" />
+    <Content Include="src\scss\volt\vendor\chartist\settings\_chartist-settings.scss" />
+    <Content Include="src\scss\volt\vendor\chartist\_chartist.scss" />
+    <Content Include="src\scss\volt\vendor\wizard\_form.scss" />
+    <Content Include="src\scss\volt\vendor\wizard\_mixins.scss" />
+    <Content Include="src\scss\volt\vendor\wizard\_variables.scss" />
+    <Content Include="src\scss\volt\vendor\_datepicker.scss" />
+    <Content Include="src\scss\volt\vendor\_headroom.scss" />
+    <Content Include="src\scss\volt\vendor\_prism.scss" />
+    <Content Include="src\scss\volt\_components.scss" />
+    <Content Include="src\scss\volt\_functions.scss" />
+    <Content Include="src\scss\volt\_layout.scss" />
+    <Content Include="src\scss\volt\_mixins.scss" />
+    <Content Include="src\scss\volt\_reboot.scss" />
+    <Content Include="src\scss\volt\_utilities.scss" />
+    <Content Include="src\scss\volt\_variables.scss" />
+    <Content Include="src\scss\volt\_vendor.scss" />
+    <Content Include="src\server.js" />
+    <Content Include="webpack.server.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj" />
+    <Folder Include="obj\Debug" />
+    <Folder Include="public" />
+    <Folder Include="src" />
+    <Folder Include="src\assets" />
+    <Folder Include="src\assets\img" />
+    <Folder Include="src\assets\img\brand" />
+    <Folder Include="src\assets\img\favicon" />
+    <Folder Include="src\assets\img\flags" />
+    <Folder Include="src\assets\img\icons" />
+    <Folder Include="src\assets\img\illustrations" />
+    <Folder Include="src\assets\img\pages" />
+    <Folder Include="src\assets\img\team" />
+    <Folder Include="src\assets\img\technologies" />
+    <Folder Include="src\assets\syntax-themes" />
+    <Folder Include="src\components" />
+    <Folder Include="src\data" />
+    <Folder Include="src\pages" />
+    <Folder Include="src\pages\components" />
+    <Folder Include="src\pages\dashboard" />
+    <Folder Include="src\pages\documentation" />
+    <Folder Include="src\pages\examples" />
+    <Folder Include="src\pages\tables" />
+    <Folder Include="src\scss" />
+    <Folder Include="src\scss\volt" />
+    <Folder Include="src\scss\volt\components" />
+    <Folder Include="src\scss\volt\layout" />
+    <Folder Include="src\scss\volt\mixins" />
+    <Folder Include="src\scss\volt\themes" />
+    <Folder Include="src\scss\volt\utilities" />
+    <Folder Include="src\scss\volt\vendor" />
+    <Folder Include="src\scss\volt\vendor\chartist" />
+    <Folder Include="src\scss\volt\vendor\chartist\settings" />
+    <Folder Include="src\scss\volt\vendor\wizard" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

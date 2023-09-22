@@ -6,7 +6,3 @@ bin/
 obj/
 .DS_Store
 
-*.njsproj
-*.njsproj.user
-*.sln
-
