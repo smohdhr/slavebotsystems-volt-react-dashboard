@@ -28,9 +28,11 @@ const app = express();
 
 const static_public_path = path.join(__dirname, '..', 'public');
 const static_serverbuild_path = path.join(__dirname, '..', 'server-build');
+const static_serverbuild_assets_path = path.join(__dirname, '..', 'server-build', 'assets');
 
 // midleware
 app.use('/public', express.static(static_public_path));
+app.use('/assets', express.static(static_serverbuild_assets_path));
 app.use('/server-build', express.static(static_serverbuild_path));
 
 app.get('*', reactHandler);
