@@ -53,13 +53,15 @@ import "../scss/volt.scss"
 
 
 const RouteWithLoader = ({ component: Component, ...rest }) => {
-  const loaded = true;
-  //const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = [true, (value) => { }];
 
-  //useEffect(() => {
-    //const timer = setTimeout(() => setLoaded(true), 1000);
-    //return () => clearTimeout(timer);
-  //}, []);
+  if (rest.hydrate) {
+    [loaded, setLoaded] = useState(false);
+    useEffect(() => {
+      const timer = setTimeout(() => setLoaded(true), 1000);
+      return () => clearTimeout(timer);
+    }, []);
+  }
 
   return (
     <Route {...rest} render={props => ( <> <Preloader show={loaded ? false : true} /> <Component {...props} /> </> ) } />
@@ -67,18 +69,18 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
 };
 
 const RouteWithSidebar = ({ component: Component, ...rest }) => {
-  const loaded = true;
-  //const [loaded, setLoaded] = useState(false);
-
-  //useEffect(() => {
-    //const timer = setTimeout(() => setLoaded(true), 1000);
-    //return () => clearTimeout(timer);
-  //}, []);
+  const [loaded, setLoaded] = [true, (value) => { }];
 
   var [showSettings, setShowSettings] = [false, (value) => { }];
   var toggleSettings = () => { };
 
   if (rest.hydrate) {
+    [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+      const timer = setTimeout(() => setLoaded(true), 1000);
+      return () => clearTimeout(timer);
+    }, []);
     const localStorageIsSettingsVisible = () => {
       return localStorage.getItem('settingsVisible') === 'false' ? false : true
     }
