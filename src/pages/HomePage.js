@@ -51,11 +51,12 @@ import Toasts from "./components/Toasts";
 
 import "../scss/volt.scss"
 
+const errorProtectionEnabled = true;
 
 const RouteWithLoader = ({ component: Component, ...rest }) => {
-  const [loaded, setLoaded] = [true, (value) => { }];
+  var [loaded, setLoaded] = [true, (value) => { }];
 
-  if (rest.hydrate) {
+  if (errorProtectionEnabled || rest.hydrate) {
     [loaded, setLoaded] = useState(false);
     useEffect(() => {
       const timer = setTimeout(() => setLoaded(true), 1000);
@@ -69,12 +70,12 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
 };
 
 const RouteWithSidebar = ({ component: Component, ...rest }) => {
-  const [loaded, setLoaded] = [true, (value) => { }];
+  var [loaded, setLoaded] = [true, (value) => { }];
 
   var [showSettings, setShowSettings] = [false, (value) => { }];
   var toggleSettings = () => { };
 
-  if (rest.hydrate) {
+  if (errorProtectionEnabled || rest.hydrate) {
     [loaded, setLoaded] = useState(false);
 
     useEffect(() => {

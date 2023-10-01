@@ -36,11 +36,12 @@
     <Content Include="public\safari-pinned-tab.svg" />
     <Content Include="public\manifest.json" />
     <Content Include="public\browserconfig.xml" />
+    <Content Include="src\assets\img\thumbnail.png" />
     <Content Include="src\main.js" />
     <Content Include="src\app.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="public\client.js" />
+    <Content Include="public\client.jsx" />
     <Content Include="src\routes.js" />
     <Content Include="obj\Debug\WebMachine1.njsproj.FileListAbsolute.txt" />
     <Content Include="src\components\AccordionComponent.js" />

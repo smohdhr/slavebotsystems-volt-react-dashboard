@@ -1,19 +1,26 @@
-const path = require('path');
-const CopyPlugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CompiledExtractPlugin } = require('@compiled/webpack-loader');
+import path from 'path';
+import nodeExternals from 'webpack-node-externals';
+import CopyPlugin from "copy-webpack-plugin";
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { CompiledExtractPlugin } from '@compiled/webpack-loader';
 
-module.exports = {
+const config = {
   entry: './src/server.js',
   target: 'node',
+  externals: [nodeExternals()],
+  experiments: {
+    outputModule: true,
+  },
   output: {
     path: path.resolve('server-build'),
-    filename: 'index.js',
+    filename: 'index.mjs',
+    module: true,
+    chunkFormat: 'module',
     assetModuleFilename: 'assets/img/[hash][ext][query]'
   },
   module: {
     rules: [
-      { test: /\.(js|[jt]sx)$/i, exclude: /node_modules/, use: [{ loader: 'babel-loader' }, { loader: '@compiled/webpack-loader', options: { extract: true } }] },
+      { test: /\.(js|[jt]sx)$/i, resolve: { fullySpecified: false }, exclude: /node_modules/, use: [{ loader: 'babel-loader' }, { loader: '@compiled/webpack-loader', options: { extract: true } }] },
       { test: /\.(scss|css)$/i, use: [MiniCssExtractPlugin.loader, { loader: "css-loader", options: { sourceMap: true } }, { loader: "sass-loader" }] },
       { test: /\.(png|jpg|gif|svg)$/i, dependency: { not: ['url'] }, type: 'asset' }
     ]
@@ -39,3 +46,5 @@ module.exports = {
     }
   ]
 };
+
+export default config;

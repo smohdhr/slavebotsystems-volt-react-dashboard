@@ -1,7 +1,7 @@
 import React from 'react';
 
-import HomePage from "./pages/HomePage";
-import ScrollToTop from "./components/ScrollToTop";
+import HomePage from "./pages/HomePage.js";
+import ScrollToTop from "./components/ScrollToTop.js";
 import { StaticRouter } from 'react-router-dom';
 
 /* 
