@@ -2,7 +2,7 @@ import path from 'path';
 import './addrequire';
 import express from 'express';
 
-import Render from './render.js';
+import Render from './src/render.js';
 
 const HOST = process.env.SERVER_HOST || "0.0.0.0";
 const PORT = process.env.SERVER_PORT || 3106;
@@ -19,13 +19,16 @@ function reactHandler(req, res) {
 
 const app = express();
 
-const static_public_path = path.join(__dirname, '..', 'public');
-const static_serverbuild_path = path.join(__dirname, '..', 'build');
-const static_serverbuild_assets_path = path.join(__dirname, '..', 'build', 'assets');
+// dirname = C:\msys64\home\Hussain\work\react\volt-react-dashboard
+const static_public_path = path.join(__dirname, 'public');
+const static_serverbuild_path = path.join(__dirname, 'build');
+const static_serverbuild_assets_path = path.join(__dirname, 'build', 'assets');
+const static_serverbuild_img_path = path.join(__dirname, 'build', 'assets', 'img');
 
 // midleware
 app.use('/public', express.static(static_public_path));
 app.use('/assets', express.static(static_serverbuild_assets_path));
+app.use('/img', express.static(static_serverbuild_img_path));
 app.use('/build', express.static(static_serverbuild_path));
 
 app.get('*', reactHandler);

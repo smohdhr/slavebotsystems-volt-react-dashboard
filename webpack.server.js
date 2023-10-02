@@ -1,9 +1,12 @@
 import path from 'path';
+import { fileURLToPath } from 'url';
 import nodeExternals from 'webpack-node-externals';
 import CopyPlugin from "copy-webpack-plugin";
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { CompiledExtractPlugin } from '@compiled/webpack-loader';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function getConfig(file) {
   const fileName = path.parse(file).name;
@@ -13,7 +16,8 @@ function getConfig(file) {
       outputModule: true,
     },
     output: {
-      path: path.resolve('build'),
+      path: path.resolve(__dirname, 'build'),
+      publicPath: '/build/',
       filename: '[name].mjs',
       module: true,
       chunkFormat: 'module',
@@ -48,16 +52,20 @@ function getConfig(file) {
     ]
   };
   config["entry"] = {};
-  config["entry"][fileName] = { import: file };
+  config["entry"][fileName] = { import: path.resolve(__dirname, file) };
   if (fileName.includes("client")) {
     config["output"]["libraryTarget"] = "commonjs2";
-    //config["externalsPresets"] = { node: true };
   }
   else {
     config["target"] = "node";
+    config["context"] = __dirname;
+    config["node"] = {
+      __filename: true,
+      __dirname: true
+    };
     config["externals"] = [nodeExternals()];
   }
   return config;
 }
 
-export default [getConfig('./src/server.js'), getConfig('./src/client.jsx')];
+export default [getConfig('server.js'), getConfig('src/client.jsx')];
