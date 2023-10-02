@@ -64,7 +64,9 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "dev:build-server": "set NODE_ENV=development & set PUBLIC_URL=public & webpack --config webpack.server.js --mode=development -w --config-name=server & webpack --config webpack.server.js --mode=development -w --config-name=client ",
+    "dev:build-all": "set NODE_ENV=development & set PUBLIC_URL=public & webpack --config webpack.server.js --mode=development -w --config-name=server & webpack --config webpack.server.js --mode=development -w --config-name=client ",
+    "dev:build-server": "set NODE_ENV=development & set PUBLIC_URL=public & webpack --config webpack.server.js --mode=development -w --config-name=server ",
+    "dev:build-client": "set NODE_ENV=development & set PUBLIC_URL=public & webpack --config webpack.server.js --mode=development -w --config-name=client ",
     "dev:start": "set PUBLIC_URL=public & set SERVER_HOST=0.0.0.0 & set SERVER_PORT=3206 & node --experimental-modules ./build/server.mjs",
     "dev:startmon": "set PUBLIC_URL=public & set SERVER_HOST=0.0.0.0 & set SERVER_PORT=3206 & nodemon ./build/server.mjs",
     "dev": "npm-run-all --parallel build dev:*"

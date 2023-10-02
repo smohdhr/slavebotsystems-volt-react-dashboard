@@ -8,7 +8,7 @@ import Chartist from "react-chartist";
 import ChartistTooltip from 'chartist-plugin-tooltips-updated';
 */
 
-import { canUseDOM } from 'exenv';
+const canUseDOM = false;
 const Chartist = canUseDOM ? require('react-chartist') : () => { return <div />; };
 const ChartistTooltip = canUseDOM ? require('chartist-plugin-tooltips-updated') : () => { return <div />; };
 

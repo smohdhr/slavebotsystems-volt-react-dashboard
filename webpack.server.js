@@ -50,7 +50,8 @@ function getConfig(file) {
   config["entry"] = {};
   config["entry"][fileName] = { import: file };
   if (fileName.includes("client")) {
-    config["target"] = "web";
+    config["output"]["libraryTarget"] = "commonjs2";
+    //config["externalsPresets"] = { node: true };
   }
   else {
     config["target"] = "node";
