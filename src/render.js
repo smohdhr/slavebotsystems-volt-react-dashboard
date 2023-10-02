@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 import HtmlWithBody from './html'
+import { ReactProvider } from './context';
 import App from './app';
 
 /* 
@@ -12,7 +13,9 @@ function AppContainer(props) {
   return (
     <HtmlWithBody> 
       <div id="root">
-        <App location={props.location} />
+        <ReactProvider>
+          <App location={props.location} />
+        </ReactProvider>
       </div>
     </HtmlWithBody>
   );
