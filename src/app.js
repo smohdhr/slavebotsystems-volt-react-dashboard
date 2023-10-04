@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Routes } from "./routes";
+import React from 'react';
+import { StaticRouter, BrowserRouter } from 'react-router-dom';
 
 import HomePage from "./pages/HomePage.js";
 import ScrollToTop from "./components/ScrollToTop.js";
-import { StaticRouter, BrowserRouter } from 'react-router-dom';
-
 
 function AppRoutes(options) {
   return (
@@ -20,17 +18,8 @@ function AppRoutes(options) {
  * give control of the initial page to the jsx engine
  */
 export default function App(options) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const checkUserToken = () => {
-    const userToken = localStorage.getItem('user-token');
-    setIsLoggedIn(userToken && userToken !== 'undefined');
-  }
-  useEffect(() => {
-    checkUserToken();
-  }, [isLoggedIn]);
-
-  const location = isLoggedIn ? options.location : Routes.LoginError.path;
-  if (isLoggedIn && options.hydrate === true) {
+  const location = options.location;
+  if (options.hydrate === true) {
     return (
       <BrowserRouter location={location}>
         <AppRoutes hydrate={options.hydrate} />
