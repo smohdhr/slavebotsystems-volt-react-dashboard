@@ -16,6 +16,7 @@ import ResetPassword from "./examples/ResetPassword";
 import Lock from "./examples/Lock";
 import NotFoundPage from "./examples/NotFound";
 import ServerError from "./examples/ServerError";
+import LoginError from "./examples/LoginError";
 
 // documentation pages
 import DocsOverview from "./documentation/DocsOverview";
@@ -120,6 +121,7 @@ export default (options) => (
     <RouteWithLoader exact path={Routes.Lock.path} component={Lock} hydrate={options.hydrate} />
     <RouteWithLoader exact path={Routes.NotFound.path} component={NotFoundPage} hydrate={options.hydrate} />
     <RouteWithLoader exact path={Routes.ServerError.path} component={ServerError} hydrate={options.hydrate} />
+    <RouteWithLoader exact path={Routes.LoginError.path} component={LoginError} hydrate={options.hydrate} />
 
     {/* pages */}
     <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} hydrate={options.hydrate} />
