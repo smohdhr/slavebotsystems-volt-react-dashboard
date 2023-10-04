@@ -6,10 +6,10 @@ import ScrollToTop from "./components/ScrollToTop.js";
 
 function AppRoutes(options) {
   return (
-    <React.Fragment>
+    <>
       <ScrollToTop />
       <HomePage hydrate={options.hydrate} />
-    </React.Fragment>
+    </>
   );
 }
 

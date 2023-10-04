@@ -83,7 +83,7 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
 
   const localStorageIsLoggedIn = () => {
     const token = localStorage.getItem('user-token');
-    return token && token !== "undefined";
+    return token === '25jNcfEMWzrJzH97wFSZnkM+RkXmmBmMaY+xRBaP48Bx/XRhl8msm1s6ogr2gvkEr5BPr5jpIHBfqGr9r1LmHQ==';
   }
   const [isLoggedIn, setLoggedIn] = useState(localStorageIsLoggedIn);
   useEffect(() => {

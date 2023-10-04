@@ -54,7 +54,8 @@
     "react-transition-group": "^4.4.1",
     "exenv": "1.2.2",
     "simplebar-react": "^2.3.0",
-    "zlib": "1.0.5"
+    "zlib": "1.0.5",
+    "crypto-js": "4.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

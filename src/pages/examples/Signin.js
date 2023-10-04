@@ -1,18 +1,33 @@
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { Col, Row, Form, Card, Button, FormCheck, Container, InputGroup } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
+import CryptoJS from 'crypto-js';
 
 import { Routes } from "../../routes";
 import BgImage from "../../assets/img/illustrations/signin.svg";
 
-
 export default () => {
-  const handleSubmit = () => {
-    alert("Signin for submit pressed");
+  const username = useRef(null);
+  const password = useRef(null);
+  const SECRET_KEY = '6cbebace4b63d8f1e96e56aad67437f008d7d79b639af4d891e7d702074bd7f1';
+  const SECRET_KEY_IV = '299482601ad84a114fdc16a0e0dd4ad4ff8bbb3af007f5c53797ec17c72f3ea4';
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = `{username:"${username}",password:"${password}"}`;
+    const encrypted = CryptoJS.AES.encrypt(
+      CryptoJS.enc.Utf8.parse(data),
+      CryptoJS.enc.Hex.parse(SECRET_KEY),
+      {
+        iv: CryptoJS.enc.Hex.parse(SECRET_KEY_IV),
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+      }).toString();
+    localStorage.setItem('user-token', encrypted);
   };
   return (
     <main>
@@ -36,7 +51,7 @@ export default () => {
                       <InputGroup.Text>
                         <FontAwesomeIcon icon={faEnvelope} />
                       </InputGroup.Text>
-                      <Form.Control autoFocus required type="email" placeholder="example@company.com" />
+                      <Form.Control autoFocus required ref={username} type="email" placeholder="example@company.com" />
                     </InputGroup>
                   </Form.Group>
                   <Form.Group>
@@ -46,7 +61,7 @@ export default () => {
                         <InputGroup.Text>
                           <FontAwesomeIcon icon={faUnlockAlt} />
                         </InputGroup.Text>
-                        <Form.Control required type="password" placeholder="Password" />
+                        <Form.Control required ref={password} type="password" placeholder="Password" />
                       </InputGroup>
                     </Form.Group>
                     <div className="d-flex justify-content-between align-items-center mb-4">
