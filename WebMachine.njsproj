@@ -46,6 +46,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\html.js" />
+    <Content Include="src\pages\examples\LoginError.js" />
     <Content Include="src\render.js" />
     <Content Include="src\routes.js" />
     <Content Include="obj\Debug\WebMachine1.njsproj.FileListAbsolute.txt" />

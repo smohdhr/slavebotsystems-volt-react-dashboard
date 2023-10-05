@@ -10,23 +10,29 @@ import CryptoJS from 'crypto-js';
 import { Routes } from "../../routes";
 import BgImage from "../../assets/img/illustrations/signin.svg";
 
+function encrypt(utf8message) {
+  const SECRET_KEY = '6cbebace4b63d8f1e96e56aad67437f008d7d79b639af4d891e7d702074bd7f1';
+  const SECRET_KEY_IV = '299482601ad84a114fdc16a0e0dd4ad4ff8bbb3af007f5c53797ec17c72f3ea4';
+
+  return CryptoJS.AES.encrypt(
+    CryptoJS.enc.Utf8.parse(utf8message),
+    CryptoJS.enc.Hex.parse(SECRET_KEY),
+    {
+      iv: CryptoJS.enc.Hex.parse(SECRET_KEY_IV),
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+    }).toString();
+}
+
+
 export default () => {
   const username = useRef(null);
   const password = useRef(null);
-  const SECRET_KEY = '6cbebace4b63d8f1e96e56aad67437f008d7d79b639af4d891e7d702074bd7f1';
-  const SECRET_KEY_IV = '299482601ad84a114fdc16a0e0dd4ad4ff8bbb3af007f5c53797ec17c72f3ea4';
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = `{username:"${username}",password:"${password}"}`;
-    const encrypted = CryptoJS.AES.encrypt(
-      CryptoJS.enc.Utf8.parse(data),
-      CryptoJS.enc.Hex.parse(SECRET_KEY),
-      {
-        iv: CryptoJS.enc.Hex.parse(SECRET_KEY_IV),
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7
-      }).toString();
+    const encrypted = encrypt(data);
     localStorage.setItem('user-token', encrypted);
   };
   return (
