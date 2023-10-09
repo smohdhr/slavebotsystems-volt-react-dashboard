@@ -2,7 +2,8 @@ import path from 'path';
 import './addrequire';
 import express from 'express';
 
-import Render from './src/render.js';
+import { Routes } from './src/routes';
+import Render from './src/render';
 
 const HOST = process.env.SERVER_HOST || "0.0.0.0";
 const PORT = process.env.SERVER_PORT || 3106;
@@ -15,6 +16,13 @@ function reactHandler(req, res) {
   } else {
     res.send(content);
   }
+}
+
+function dbHandler(req, res) {
+  let result = {
+    userToken: "25jNcfEMWzrJzH97wFSZnkM+RkXmmBmMaY+xRBaP48Bx/XRhl8msm1s6ogr2gvkEr5BPr5jpIHBfqGr9r1LmHQ=="
+  };
+  res.send(result);
 }
 
 const app = express();
@@ -31,7 +39,11 @@ app.use('/assets', express.static(static_serverbuild_assets_path));
 app.use('/img', express.static(static_serverbuild_img_path));
 app.use('/build', express.static(static_serverbuild_path));
 
-app.get('*', reactHandler);
+Object.values(Routes).forEach((value) => {
+  app.get(value.path, reactHandler);
+});
+
+app.get('/db/*', dbHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on ${HOST} at port ${PORT}`);

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { Col, Row, Form, Card, Button, FormCheck, Container, InputGroup } from '@themesberg/react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 
 import { Routes } from "../../routes";
@@ -34,6 +34,7 @@ export default () => {
     const data = `{username:"${username}",password:"${password}"}`;
     const encrypted = encrypt(data);
     localStorage.setItem('user-token', encrypted);
+    location.pathname = '/';
   };
   return (
     <main>
