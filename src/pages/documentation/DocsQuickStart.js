@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Row, Col, Card, Container, Alert } from '@themesberg/react-bootstrap';
+import { Row, Col, Card, Container, Alert } from 'react-bootstrap';
 
 import Code from "../../components/Code";
 
@@ -12,10 +12,10 @@ export default () => (
           <Card.Body>
             <article>
               <h1 className="h2" id="quick-start">Quick Start </h1>
-              <p className="fs-5 fw-light">This guide will help you get started with Volt React Dashboard</p>
+              <p className="fs-5 fw-light">This guide will help you get started with SlavebotSystems React Dashboard</p>
 
               <p>
-                <b>Volt React Dashboard</b> is built on top of <Card.Link href="https://react-bootstrap.github.io/" target="_blank">React Bootstrap</Card.Link> using <a href="https://github.com/facebook/create-react-app/" target="_blank" rel="noopener noreferrer">Create React App</a>.
+                <b>SlavebotSystems React Dashboard</b> is built on top of <Card.Link href="https://react-bootstrap.github.io/" target="_blank">React Bootstrap</Card.Link> using <a href="https://github.com/facebook/create-react-app/" target="_blank" rel="noopener noreferrer">Create React App</a>.
               </p>
               
               <p>Please follow these steps to install the required technologies:</p>

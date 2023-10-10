@@ -137,8 +137,6 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
 };
 
 export default function (options) {
-  const isLoggedIn = { value: false };
-
   return (
     <Switch>
       <RouteWithLoader exact path={Routes.Presentation.path} component={Presentation} />
@@ -152,38 +150,38 @@ export default function (options) {
       <RouteWithLoader exact path={Routes.LoginError.path} component={LoginError} />
 
       {/* pages */}
-      <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Upgrade.path} component={Upgrade} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Transactions.path} component={Transactions} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Settings.path} component={Settings} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.BootstrapTables.path} component={BootstrapTables} login={isLoggedIn} />
+      <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
+      <RouteWithSidebar exact path={Routes.Upgrade.path} component={Upgrade} />
+      <RouteWithSidebar exact path={Routes.Transactions.path} component={Transactions} />
+      <RouteWithSidebar exact path={Routes.Settings.path} component={Settings} />
+      <RouteWithSidebar exact path={Routes.BootstrapTables.path} component={BootstrapTables} />
 
       {/* components */}
-      <RouteWithSidebar exact path={Routes.Accordions.path} component={Accordion} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Alerts.path} component={Alerts} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Badges.path} component={Badges} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Breadcrumbs.path} component={Breadcrumbs} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Buttons.path} component={Buttons} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Forms.path} component={Forms} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Modals.path} component={Modals} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Navs.path} component={Navs} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Navbars.path} component={Navbars} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Pagination.path} component={Pagination} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Popovers.path} component={Popovers} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Progress.path} component={Progress} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Tables.path} component={Tables} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Tabs.path} component={Tabs} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Tooltips.path} component={Tooltips} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.Toasts.path} component={Toasts} login={isLoggedIn} />
+      <RouteWithSidebar exact path={Routes.Accordions.path} component={Accordion} />
+      <RouteWithSidebar exact path={Routes.Alerts.path} component={Alerts} />
+      <RouteWithSidebar exact path={Routes.Badges.path} component={Badges} />
+      <RouteWithSidebar exact path={Routes.Breadcrumbs.path} component={Breadcrumbs} />
+      <RouteWithSidebar exact path={Routes.Buttons.path} component={Buttons} />
+      <RouteWithSidebar exact path={Routes.Forms.path} component={Forms} />
+      <RouteWithSidebar exact path={Routes.Modals.path} component={Modals} />
+      <RouteWithSidebar exact path={Routes.Navs.path} component={Navs} />
+      <RouteWithSidebar exact path={Routes.Navbars.path} component={Navbars} />
+      <RouteWithSidebar exact path={Routes.Pagination.path} component={Pagination} />
+      <RouteWithSidebar exact path={Routes.Popovers.path} component={Popovers} />
+      <RouteWithSidebar exact path={Routes.Progress.path} component={Progress} />
+      <RouteWithSidebar exact path={Routes.Tables.path} component={Tables} />
+      <RouteWithSidebar exact path={Routes.Tabs.path} component={Tabs} />
+      <RouteWithSidebar exact path={Routes.Tooltips.path} component={Tooltips} />
+      <RouteWithSidebar exact path={Routes.Toasts.path} component={Toasts} />
 
       {/* documentation */}
-      <RouteWithSidebar exact path={Routes.DocsOverview.path} component={DocsOverview} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.DocsDownload.path} component={DocsDownload} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.DocsQuickStart.path} component={DocsQuickStart} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.DocsLicense.path} component={DocsLicense} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.DocsFolderStructure.path} component={DocsFolderStructure} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.DocsBuild.path} component={DocsBuild} login={isLoggedIn} />
-      <RouteWithSidebar exact path={Routes.DocsChangelog.path} component={DocsChangelog} login={isLoggedIn} />
+      <RouteWithSidebar exact path={Routes.DocsOverview.path} component={DocsOverview} />
+      <RouteWithSidebar exact path={Routes.DocsDownload.path} component={DocsDownload} />
+      <RouteWithSidebar exact path={Routes.DocsQuickStart.path} component={DocsQuickStart} />
+      <RouteWithSidebar exact path={Routes.DocsLicense.path} component={DocsLicense} />
+      <RouteWithSidebar exact path={Routes.DocsFolderStructure.path} component={DocsFolderStructure} />
+      <RouteWithSidebar exact path={Routes.DocsBuild.path} component={DocsBuild} />
+      <RouteWithSidebar exact path={Routes.DocsChangelog.path} component={DocsChangelog} />
 
       <Redirect to={Routes.NotFound.path} />
     </Switch>

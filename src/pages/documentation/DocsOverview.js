@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Row, Col, Card, Container } from '@themesberg/react-bootstrap';
+import { Row, Col, Card, Container } from 'react-bootstrap';
 
 
 export default () => (
@@ -11,9 +11,8 @@ export default () => (
           <Card.Body>
             <article>
               <h1 className="h2" id="overview">Overview </h1>
-              <p className="fs-5 fw-light">Download files for Volt React Dashboard</p>
 
-              <p>Volt React Dashboard is a React.js and Bootstrap 5 powered admin dashboard template featuring components, pages and plugins that you can use to create an awesome and interactive admin interface.</p>
+              <p>SlavebotSystems React Dashboard is a React.js and Bootstrap 5 powered admin dashboard featuring components, pages and plugins.</p>
               <p>This product is built using the following widely used technologies:</p>
               <ul className="docs-list">
                 <li>Interactive UIs using <Card.Link href="https://reactjs.org/" target="_blank">React</Card.Link></li>
@@ -21,9 +20,6 @@ export default () => (
                 <li>Most popular CSS Framework <Card.Link href="https://getbootstrap.com/" target="_blank">Bootstrap</Card.Link></li>
                 <li>Awesome CSS preprocessor <Card.Link href="https://sass-lang.com/" target="_blank">Sass</Card.Link></li>
               </ul>
-
-              <h2 id="getting-support">Getting support</h2>
-              <p>We offer 6 months of support by default for each purchased template. Please <Card.Link href="https://themesberg.com/contact" target="_blank">contact us</Card.Link> and we&rsquo;ll get back to you in no time!</p>
 
               <h2 id="community">Community</h2>
               <ul className="docs-list">

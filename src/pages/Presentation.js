@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faExternalLinkAlt, faTimesCircle, faCheckCircle, faCalendarAlt, faCodeBranch, faShoppingCart, faFolder, faMapMarkedAlt, faPager, faFileCode, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { faBootstrap, faGithub, faJs, faReact, faSass } from "@fortawesome/free-brands-svg-icons";
-import { Col, Row, Card, Image, Button, Container, ListGroup, Tooltip, OverlayTrigger, Form, Navbar, Nav, Badge } from '@themesberg/react-bootstrap';
+import { Col, Row, Card, Image, Button, Container, ListGroup, Tooltip, OverlayTrigger, Form, Navbar, Nav, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import Code from "../components/CodeEditor";
@@ -76,7 +76,7 @@ export default () => {
         <Container className="position-relative justify-content-between px-3">
           <Navbar.Brand as={HashLink} to="#home" className="me-lg-3 d-flex align-items-center">
             <Image src={ReactHero} />
-            <span className="ms-2 brand-text d-none d-md-inline">SlavebotSystems Volt React</span>
+            <span className="ms-2 brand-text d-none d-md-inline">SlavebotSystems React Dashboard</span>
           </Navbar.Brand>
 
           <div className="d-flex align-items-center">
@@ -93,16 +93,8 @@ export default () => {
           <Row>
             <Col xs={12} className="text-center">
               <div className="react-big-icon d-none d-lg-block"><span className="fab fa-react"></span></div>
-              <h1 className="fw-bolder text-secondary">SlavebotSystems Volt React Dashboard</h1>
+              <h1 className="fw-bolder text-secondary">SlavebotSystems React Dashboard</h1>
               <p className="text-muted fw-light mb-5 h5">Powered by React.js and Bootstrap 5</p>
-              <div className="d-flex justify-content-center flex-column mb-6 mb-lg-5 mt-5">
-                <div className="text-center">
-                  <a href="https://themesberg.com" target="_blank">
-                    <Image src={ThemesbergLogoIcon} height={25} width={25} className="mb-3" alt="Themesberg Logo" />
-                    <p className="text-muted font-small m-0">Built on a Themesberg production</p>
-                  </a>
-                </div>
-              </div>
             </Col>
           </Row>
           <figure className="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2">
@@ -150,7 +142,7 @@ export default () => {
             <Col lg={5} className="order-lg-2 mb-5 mb-lg-0">
               <h2>Powered by React.js</h2>
               <p className="mb-3 lead fw-bold">The most popular front-end library in the world</p>
-              <p className="mb-4">Volt React is an admin dashboard template that is built using React.js components using react hooks and a data-driven structure that can kick-start your app in no time.</p>
+              <p className="mb-4">SlavebotSystems React Dashboard is an admin dashboard that is built using React.js components using react hooks and a data-driven structure.</p>
               <Button as={Link} to={Routes.DashboardOverview.path} variant="secondary">Dashboard <FontAwesomeIcon icon={faExternalLinkAlt} className="ms-1" /></Button>
             </Col>
             <Col lg={6} className="order-lg-1">
@@ -161,7 +153,6 @@ export default () => {
             <Col lg={5}>
               <h2>React.js Components</h2>
               <p className="mb-3 lead fw-bold">100+ premium UI elements based on Bootstrap 5</p>
-              <p className="mb-4">We've built over 100 React.js powered components to be used throughout your application saving you time kickstarting your project.</p>
               <p className="mb-4">Check out the components and use our live React.js component editor to try the code.</p>
               <Button as={Link} to={Routes.Forms.path} variant="secondary" className="mb-5 mb-lg-0"><FontAwesomeIcon icon={faReact} className="me-1" /> Components examples</Button>
             </Col>
@@ -187,7 +178,7 @@ export default () => {
                 Latest version of Bootstrap 5
               </p>
               <p className="mb-4">
-                Volt React is built using the latest version of Bootstrap 5 and we only used Vanilla Javascript for everything including the plugins
+                SlavebotSystems React Dashboard is built using the latest version of Bootstrap 5 and we only used Vanilla Javascript for everything including the plugins
               </p>
             </Col>
             <Col lg={6} className="col-lg-6 order-lg-1">
@@ -201,7 +192,7 @@ export default () => {
           <Row className="justify-content-center mb-5 mb-lg-6">
             <Col xs={12} className="text-center">
               <h2 className="px-lg-5">Awesome Features</h2>
-              <p className="lead px-lg-8">You get all React.js components fully customized. Besides, you receive numerous plugins out of the box and ready to use.</p>
+              <p className="lead px-lg-8">React.js components are fully customized. Besides, you receive numerous plugins out of the box and ready to use.</p>
             </Col>
           </Row>
           <Row>
@@ -212,12 +203,12 @@ export default () => {
       <footer className="footer py-6 bg-dark text-white">
         <Container>
           <Row>
-            <Col md={4}>
+            <Col md={6}>
               <Navbar.Brand as={HashLink} to="#home" className="me-lg-3 mb-3 d-flex align-items-center">
                 <Image src={ReactHero} />
-                <span className="ms-2 brand-text">Volt React</span>
+                <span className="ms-2 brand-text">SlavebotSystems React Dashboard</span>
               </Navbar.Brand>
-              <p>Volt React is a free and open source admin dashboard template powered by React.js and Bootstrap 5.</p>
+              <p>SlavebotSystems React Dashboard is an admin dashboard powered by React.js and Bootstrap 5.</p>
             </Col>
             <Col xs={12} md={4} className="mb-5 mb-lg-0">
               <span className="h5 mb-3 d-block">Subscribe</span>

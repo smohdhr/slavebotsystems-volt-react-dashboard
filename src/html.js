@@ -22,22 +22,22 @@ export default function HtmlWithBody(props) {
         <meta name="theme-color" content="#ffffff" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
-        <meta name="description" content="Volt React Dashboard is a free and open source admin dashboard template powered by React.js and Bootstrap 5 featuring over 100 UI elements, plugins, and example pages." />
+        <meta name="description" content="SlavebotSystems React Dashboard is a free and open source admin dashboard powered by React.js and Bootstrap 5 featuring over 100 UI elements, plugins, and example pages." />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://slavebotsystems.com/volt-react-dashboard" />
-        <meta property="og:title" content="Volt React Dashboard" />
-        <meta property="og:description" content="Volt React Dashboard is a free and open source admin dashboard template powered by React.js and Bootstrap 5 featuring over 100 UI elements, plugins, and example pages." />
+        <meta property="og:title" content="SlavebotSystems React Dashboard" />
+        <meta property="og:description" content="SlavebotSystems React Dashboard is an admin dashboard powered by React.js and Bootstrap 5 featuring over 100 UI elements, plugins, and example pages." />
         <meta property="og:image" content="/assets/img/thumbnail.png" />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://slavebotsystems.com/volt-react-dashboard" />
-        <meta property="twitter:title" content="Volt React Dashboard" />
-        <meta property="twitter:description" content="Volt React Dashboard is a free and open source admin dashboard template powered by React.js and Bootstrap 5 featuring over 100 UI elements, plugins, and example pages." />
+        <meta property="twitter:title" content="SlavebotSystems React Dashboard" />
+        <meta property="twitter:description" content="SlavebotSystems React Dashboard is an admin dashboard powered by React.js and Bootstrap 5 featuring over 100 UI elements, plugins, and example pages." />
         <meta property="twitter:image" content="/assets/img/thumbnail.png" />
 
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-        <title>Volt React Dashboard</title>
+        <title>SlavebotSystems React Dashboard</title>
       </head>
 
       <body>
