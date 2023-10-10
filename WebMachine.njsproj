@@ -238,7 +238,7 @@
     <Content Include="src\pages\components\Badges.js" />
     <Content Include="src\pages\components\Breadcrumbs.js" />
     <Content Include="src\pages\components\Buttons.js" />
-    <Content Include="src\pages\components\Forms.js" />
+    <Content Include="src\pages\components\PageForms.js" />
     <Content Include="src\pages\components\Modals.js" />
     <Content Include="src\pages\components\Navbars.js" />
     <Content Include="src\pages\components\Navs.js" />
