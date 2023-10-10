@@ -1,15 +1,23 @@
 import React from 'react';
 import { StaticRouter, BrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import HomePage from "./pages/HomePage.js";
 import ScrollToTop from "./components/ScrollToTop.js";
 
 function AppRoutes(options) {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false
+      }
+    }
+  });
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <ScrollToTop />
       <HomePage hydrate={options.hydrate} />
-    </>
+    </QueryClientProvider>
   );
 }
 

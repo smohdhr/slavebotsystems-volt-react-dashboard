@@ -151,7 +151,7 @@ export default () => {
               <h2>Powered by React.js</h2>
               <p className="mb-3 lead fw-bold">The most popular front-end library in the world</p>
               <p className="mb-4">Volt React is an admin dashboard template that is built using React.js components using react hooks and a data-driven structure that can kick-start your app in no time.</p>
-              <Button as={Link} to={Routes.DashboardOverview.path} variant="secondary" target="_blank">Live Demo <FontAwesomeIcon icon={faExternalLinkAlt} className="ms-1" /></Button>
+              <Button as={Link} to={Routes.DashboardOverview.path} variant="secondary">Dashboard <FontAwesomeIcon icon={faExternalLinkAlt} className="ms-1" /></Button>
             </Col>
             <Col lg={6} className="order-lg-1">
               <Image src={ReactMockupImg} alt="Calendar Preview" />
@@ -163,7 +163,7 @@ export default () => {
               <p className="mb-3 lead fw-bold">100+ premium UI elements based on Bootstrap 5</p>
               <p className="mb-4">We've built over 100 React.js powered components to be used throughout your application saving you time kickstarting your project.</p>
               <p className="mb-4">Check out the components and use our live React.js component editor to try the code.</p>
-              <Button as={Link} to={Routes.Forms.path} variant="secondary" className="mb-5 mb-lg-0" target="_blank"><FontAwesomeIcon icon={faReact} className="me-1" /> Components examples</Button>
+              <Button as={Link} to={Routes.Forms.path} variant="secondary" className="mb-5 mb-lg-0"><FontAwesomeIcon icon={faReact} className="me-1" /> Components examples</Button>
             </Col>
             <Col lg={6} className="rounded shadow pt-3">
               <Code scope={{ Form, Button }} code={`<Form>

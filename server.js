@@ -20,7 +20,7 @@ function reactHandler(req, res) {
 
 function dbHandler(req, res) {
   let result = {
-    userToken: "25jNcfEMWzrJzH97wFSZnkM+RkXmmBmMaY+xRBaP48Bx/XRhl8msm1s6ogr2gvkEr5BPr5jpIHBfqGr9r1LmHQ=="
+    userToken: 'qLXoVBhdYO1nNJjOCI7M4ZZ5zPl73pSCFmLgQKZNDNnTVIGPAw+ZLfDH4yWQTMjofto/GZjeZl+XoJZa6DsdYjuux6Vtq0g3INslSeMXhZZA4Qy00DGugXuSk63/89qs'
   };
   res.send(result);
 }

@@ -7,7 +7,7 @@ import { Col, Row, Card, Form, Container, InputGroup } from '@themesberg/react-b
 
 import Documentation from "../../components/Documentation";
 
-export default () => {
+export default function() {
   return (
     <article>
       <Container className="px-0">
@@ -225,17 +225,17 @@ import moment from "moment-timezone";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";`}
-          example={`const Datepicker = () => {
+          example={`const Datepicker = function() {
   const [birthday, setBirthday] = React.useState("");
 
   return(
     <Form>
       <Form.Group className="mb-3">
-        <Datetime
+        <Datetime.default
           timeFormat={false}
           closeOnSelect={false}
           onChange={setBirthday}
-          renderInput={(props, openCalendar) => (
+          renderInput={function (props, openCalendar, closeCalendar) { return (
             <InputGroup>
               <InputGroup.Text><FontAwesomeIcon icon={faCalendarAlt} /></InputGroup.Text>
               <Form.Control
@@ -246,7 +246,7 @@ import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";`}
                 onFocus={openCalendar}
                 onChange={() => { }} />
             </InputGroup>
-          )} />
+          );}} />
       </Form.Group>
     </Form>
   );

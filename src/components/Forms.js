@@ -7,7 +7,7 @@ import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Card, Form, Button, InputGroup } from '@themesberg/react-bootstrap';
 
 
-export const GeneralInfoForm = () => {
+export function GeneralInfoForm() {
   const [birthday, setBirthday] = useState("");
 
   return (
@@ -33,21 +33,23 @@ export const GeneralInfoForm = () => {
             <Col md={6} className="mb-3">
               <Form.Group id="birthday">
                 <Form.Label>Birthday</Form.Label>
-                <Datetime
+                <Datetime.default
                   timeFormat={false}
                   onChange={setBirthday}
-                  renderInput={(props, openCalendar) => (
-                    <InputGroup>
-                      <InputGroup.Text><FontAwesomeIcon icon={faCalendarAlt} /></InputGroup.Text>
-                      <Form.Control
-                        required
-                        type="text"
-                        value={birthday ? moment(birthday).format("MM/DD/YYYY") : ""}
-                        placeholder="mm/dd/yyyy"
-                        onFocus={openCalendar}
-                        onChange={() => { }} />
-                    </InputGroup>
-                  )} />
+                  renderInput={function (props, openCalendar, closeCalendar) {
+                    return (
+                      <InputGroup>
+                        <InputGroup.Text><FontAwesomeIcon icon={faCalendarAlt} /></InputGroup.Text>
+                        <Form.Control
+                          required
+                          type="text"
+                          value={birthday ? moment(birthday).format("MM/DD/YYYY") : ""}
+                          placeholder="mm/dd/yyyy"
+                          onFocus={openCalendar}
+                          onChange={() => { }} />
+                      </InputGroup>
+                    );
+                  }} />
               </Form.Group>
             </Col>
             <Col md={6} className="mb-3">

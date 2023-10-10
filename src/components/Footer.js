@@ -7,25 +7,40 @@ import { faCogs, faDownload, faRocket } from "@fortawesome/free-solid-svg-icons"
 import BS5Logo from "../assets/img/technologies/bootstrap-5-logo.svg";
 import ReactLogo from "../assets/img/technologies/react-logo.svg";
 import LaravelLogo from "../assets/img/technologies/laravel-logo.svg";
-//import GitHubButton from 'react-github-btn';
+import { Button as MuiButton } from '@mui/material';
+
+function Footer(props) {
+  const currentYear = moment().get("year");
+  return (
+    <footer className="footer section py-5">
+      <Row>
+        <Col xs={12} lg={6} className="mb-4 mb-lg-0">
+          <p className="mb-0 text-center text-xl-left">
+            Copyright © {`${currentYear} `}
+            <Card.Link href="https://slavebotsystems.com" target="_blank" className="text-blue text-decoration-none fw-normal">
+              SlavebotSystems
+            </Card.Link>
+          </p>
+        </Col>
+      </Row>
+    </footer>
+  );
+}
 
 export default (props) => {
-  const currentYear = moment().get("year");
-  const showSettings = props.showSettings;
-
   const toggleSettings = (toggle) => {
     props.toggleSettings(toggle);
   }
 
-  return (
-    <div>
-      {showSettings ? (
+  if (props.showSettings) {
+    return (
+      <div>
         <Card className="theme-settings">
           <Card.Body className="pt-4">
-            <Button className="theme-settings-close" variant="close" size="sm" aria-label="Close" onClick={() => { toggleSettings(false) }} />
+            <Button className="theme-settings-close" variant="close" size="sm" aria-label="Close" onClick={() => { toggleSettings(false); }} />
             <div className="d-flex justify-content-between align-items-center mb-3">
               <p className="m-0 mb-1 me-3 fs-7">Made with open source <span role="img" aria-label="gratitude">💙</span></p>
-              {/* <GitHubButton href="https://github.com/themesberg/volt-react-dashboard" data-size="large" data-show-count="true" aria-label="Star themesberg/volt-react-dashboard on GitHub">Star</GitHubButton> */}
+              <MuiButton href="https://github.com/themesberg/volt-react-dashboard" data-size="large" data-show-count="true" aria-label="Star themesberg/volt-react-dashboard on GitHub">Star</MuiButton>
             </div>
             <Button href="https://themesberg.com/product/dashboard/volt-react" target="_blank" variant="primary" className="mb-3 w-100"><FontAwesomeIcon icon={faDownload} className="me-1" /> Download</Button>
             <p className="fs-7 text-gray-700 text-center">Available in the following technologies:</p>
@@ -47,29 +62,22 @@ export default (props) => {
                   <Image src={LaravelLogo} className="image image-xs" />
                 </OverlayTrigger>
               </Card.Link>
-
             </div>
           </Card.Body>
         </Card>
-      ) : (
-        <Card className="theme-settings theme-settings-expand" onClick={() => { toggleSettings(true) }}>
-          <Card.Body className="p-3 py-2">
-            <span className="fw-bold h6"><FontAwesomeIcon icon={faCogs} className="me-1 fs-7" /> Settings</span>
-          </Card.Body>
-        </Card>
-      )}
-      <footer className="footer section py-5">
-        <Row>
-          <Col xs={12} lg={6} className="mb-4 mb-lg-0">
-            <p className="mb-0 text-center text-xl-left">
-              Copyright © {`${currentYear} `}
-              <Card.Link href="https://slavebotsystems.com" target="_blank" className="text-blue text-decoration-none fw-normal">
-                SlavebotSystems
-              </Card.Link>
-            </p>
-          </Col>
-        </Row>
-      </footer>
+        <Footer />
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <Card className="theme-settings theme-settings-expand" onClick={() => { toggleSettings(true); }}>
+        <Card.Body className="p-3 py-2">
+          <span className="fw-bold h6"><FontAwesomeIcon icon={faCogs} className="me-1 fs-7" />Settings</span>
+        </Card.Body>
+      </Card>
+      <Footer />
     </div>
   );
 };

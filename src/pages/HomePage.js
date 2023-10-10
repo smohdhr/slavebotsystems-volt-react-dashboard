@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { Routes } from '../routes';
+import { useQuery } from 'react-query';
 
 // pages
 import Presentation from "./Presentation";
@@ -38,7 +39,7 @@ import Alerts from "./components/Alerts";
 import Badges from "./components/Badges";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Buttons from "./components/Buttons";
-import Forms from "./components/Forms";
+import Forms from "./components/PageForms";
 import Modals from "./components/Modals";
 import Navs from "./components/Navs";
 import Navbars from "./components/Navbars";
@@ -50,7 +51,29 @@ import Tabs from "./components/Tabs";
 import Tooltips from "./components/Tooltips";
 import Toasts from "./components/Toasts";
 
+
 import "../scss/volt.scss"
+
+function getAbsoluteUrl(url) {
+  return location.protocol + '//' + location.host + url;
+}
+
+function isUserTokenValid() {
+  return fetch(getAbsoluteUrl("/db/user-token")).then((response) => {
+    let promisejson = response.json();
+    return promisejson;
+  }).then((data) => {
+    if (!sessionStorage || !data) {
+      return null;
+    }
+    if (!data.userToken) {
+      return false;
+    }
+    const token = sessionStorage.getItem('user-token');
+    //console.log(`token = ${token}, data = ${data.userToken}`);
+    return token === data.userToken;
+  });
+}
 
 const RouteWithLoader = ({ component: Component, ...rest }) => {
   const [loaded, setLoaded] = useState(false);
@@ -67,55 +90,54 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
 const RouteWithSidebar = ({ component: Component, ...rest }) => {
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 1000);
-    return () => clearTimeout(timer);
-  }, []);
   const localStorageIsSettingsVisible = () => {
+    if (typeof localStorage === 'undefined') {
+      return false;
+    }
     return localStorage.getItem('settingsVisible') === 'false' ? false : true
   }
   const [showSettings, setShowSettings] = useState(localStorageIsSettingsVisible);
-
   const toggleSettings = () => {
+    if (typeof localStorage === 'undefined') {
+      return;
+    }
     setShowSettings(!showSettings);
     localStorage.setItem('settingsVisible', !showSettings);
   }
 
+  const { data, status } = useQuery("userTokenValid", isUserTokenValid);
+  switch (status) {
+    case "loading":
+    case "error":
+      return (
+        <Route {...rest} render={
+          props => (
+            <Preloader show={true} />
+          )}
+        />
+      );
+      break;
+    case "success":
+      break;
+  }
+
   return (
     <Route {...rest} render={props => (
-      rest.login &&
-      <>
-        <Preloader show={loaded ? false : true} />
-        <Sidebar />
-
-        <main className="content">
-          <Navbar />
-          <Component {...props} />
-          <Footer toggleSettings={toggleSettings} showSettings={showSettings} />
-        </main>
-      </>
-      || <Redirect to={Routes.Signin.path} />
-    )}
+        data && <>
+          <Sidebar />
+          <main className="content">
+            <Navbar />
+            <Component {...props} />
+            <Footer toggleSettings={toggleSettings} showSettings={showSettings} />
+          </main>
+        </> || <Redirect to={Routes.Signin.path} />
+      )}
     />
   );
 };
 
 export default function (options) {
-  const [isLoggedIn, setLoggedIn] = useState(null);
-  //const [counter, setCounter] = useState(0);
-
-  const loginErrorComponent = Signin;
-
-  fetch("/db/user-token")
-  .then((response) => {
-    let promisejson = response.json();
-    return promisejson;
-  })
-  .then((data) => {
-    console.log(`data = ${data.userToken}`);
-    const token = localStorage.getItem('user-token');
-    setLoggedIn(token === data.userToken);
-  });
+  const isLoggedIn = { value: false };
 
   return (
     <Switch>

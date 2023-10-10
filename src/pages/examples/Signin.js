@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { Col, Row, Form, Card, Button, FormCheck, Container, InputGroup } from '@themesberg/react-bootstrap';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 
 import { Routes } from "../../routes";
@@ -24,6 +24,11 @@ function encrypt(utf8message) {
     }).toString();
 }
 
+function getAbsoluteUrl(url) {
+  return location.protocol + '//' + location.host + url;
+}
+
+
 
 export default () => {
   const username = useRef(null);
@@ -31,17 +36,20 @@ export default () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = `{username:"${username}",password:"${password}"}`;
+    const u = username.current.value;
+    const p = password.current.value;
+    const data = `{username:"${u}",password:"${p}"}`;
     const encrypted = encrypt(data);
-    localStorage.setItem('user-token', encrypted);
-    location.pathname = '/';
+    //console.log(`setting token = ${encrypted}`);
+    sessionStorage.setItem('user-token', encrypted);
+    location.assign(getAbsoluteUrl(Routes.DashboardOverview.path));
   };
   return (
     <main>
       <section className="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
         <Container>
           <p className="text-center">
-            <Card.Link as={Link} to={Routes.DashboardOverview.path} className="text-gray-700">
+            <Card.Link as={Link} to={Routes.Presentation.path} className="text-gray-700">
               <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Back to homepage
             </Card.Link>
           </p>
