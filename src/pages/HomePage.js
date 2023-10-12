@@ -29,9 +29,7 @@ import DocsBuild from "./documentation/DocsBuild";
 import DocsChangelog from "./documentation/DocsChangelog";
 
 // components
-import Sidebar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import SidebarFrame from "../components/Sidebar";
 import Preloader from "../components/Preloader";
 
 import Accordion from "./components/Accordion";
@@ -90,21 +88,6 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
 const RouteWithSidebar = ({ component: Component, ...rest }) => {
   const [loaded, setLoaded] = useState(false);
 
-  const localStorageIsSettingsVisible = () => {
-    if (typeof localStorage === 'undefined') {
-      return false;
-    }
-    return localStorage.getItem('settingsVisible') === 'false' ? false : true
-  }
-  const [showSettings, setShowSettings] = useState(localStorageIsSettingsVisible);
-  const toggleSettings = () => {
-    if (typeof localStorage === 'undefined') {
-      return;
-    }
-    setShowSettings(!showSettings);
-    localStorage.setItem('settingsVisible', !showSettings);
-  }
-
   const { data, status } = useQuery("userTokenValid", isUserTokenValid);
   switch (status) {
     case "loading":
@@ -123,14 +106,10 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
 
   return (
     <Route {...rest} render={props => (
-        data && <>
-          <Sidebar />
-          <main className="content">
-            <Navbar />
-            <Component {...props} />
-            <Footer toggleSettings={toggleSettings} showSettings={showSettings} />
-          </main>
-        </> || <Redirect to={Routes.Signin.path} />
+        data &&
+        <SidebarFrame>
+          <Component {...props} />
+        </SidebarFrame> || <Redirect to={Routes.Signin.path} />
       )}
     />
   );
