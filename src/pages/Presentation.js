@@ -6,6 +6,7 @@ import { Col, Row, Card, Image, Button, Container, ListGroup, Tooltip, OverlayTr
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import Code from "../components/CodeEditor";
+import { Button as MuiButton } from '@mui/material';
 
 import { Routes } from "../routes";
 import ThemesbergLogoIcon from "../assets/img/themesberg.svg";
@@ -143,7 +144,7 @@ export default () => {
               <h2>Powered by React.js</h2>
               <p className="mb-3 lead fw-bold">The most popular front-end library in the world</p>
               <p className="mb-4">SlavebotSystems React Dashboard is an admin dashboard that is built using React.js components using react hooks and a data-driven structure.</p>
-              <Button as={Link} to={Routes.DashboardOverview.path} variant="secondary">Dashboard <FontAwesomeIcon icon={faExternalLinkAlt} className="ms-1" /></Button>
+              <MuiButton component={Link} to={Routes.DashboardOverview.path} variant="secondary">Dashboard <FontAwesomeIcon icon={faExternalLinkAlt} className="ms-1" /></MuiButton>
             </Col>
             <Col lg={6} className="order-lg-1">
               <Image src={ReactMockupImg} alt="Calendar Preview" />
@@ -154,7 +155,7 @@ export default () => {
               <h2>React.js Components</h2>
               <p className="mb-3 lead fw-bold">100+ premium UI elements based on Bootstrap 5</p>
               <p className="mb-4">Check out the components and use our live React.js component editor to try the code.</p>
-              <Button as={Link} to={Routes.Forms.path} variant="secondary" className="mb-5 mb-lg-0"><FontAwesomeIcon icon={faReact} className="me-1" /> Components examples</Button>
+              <MuiButton component={Link} to={Routes.Forms.path} variant="secondary" className="mb-5 mb-lg-0"><FontAwesomeIcon icon={faReact} className="me-1" /> Components examples</MuiButton>
             </Col>
             <Col lg={6} className="rounded shadow pt-3">
               <Code scope={{ Form, Button }} code={`<Form>
@@ -231,7 +232,7 @@ export default () => {
           <Row>
             <Col className="mb-md-2">
               <div className="d-flex text-center justify-content-center align-items-center" role="contentinfo">
-                <p className="font-weight-normal font-small mb-0">Copyright © SlavebotSystems <span className="current-year">2022</span>. All rights reserved.</p>
+                <p className="font-weight-normal font-small mb-0">Copyright © SlavebotSystems <span className="current-year">2023</span>. All rights reserved.</p>
               </div>
             </Col>
           </Row>

@@ -1,16 +1,22 @@
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import SimpleBar from 'simplebar-react';
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes, faCalendarAlt, faMapPin, faInbox, faRocket } from "@fortawesome/free-solid-svg-icons";
-import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from 'react-bootstrap';
+import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar, NavDropdown, Container, Row, Col, Stack } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Button as MuiButton } from '@mui/material';
 
 import { Routes } from "../routes";
 import ReactHero from "../assets/img/technologies/react-hero-logo.svg";
 import ProfilePicture from "../assets/img/team/profile-picture-3.jpg";
+
+function signOutUser() {
+  sessionStorage.removeItem('user-token');
+  return true;
+};
 
 export default (props = {}) => {
   const location = useLocation();
@@ -43,6 +49,84 @@ export default (props = {}) => {
     );
   };
 
+  function Sidebar(options) {
+    return (
+      <SimpleBar className={`collapse ${showClass} sidebar d-block bg-primary text-white`} style={{top: options.top}}>
+        <br />
+        <div className="sidebar-inner px-4 pt-3">
+          <div className="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
+            <div className="d-flex align-items-center">
+              <div className="user-avatar lg-avatar me-4">
+                <Image src={ProfilePicture} className="card-img-top rounded-circle border-white" />
+              </div>
+              <div className="d-block">
+                <h6>Hi, Jane</h6>
+                <MuiButton component={Link} variant="secondary" size="xs" to={Routes.Signin.path} className="text-dark">
+                  <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Sign Out
+                </MuiButton>
+              </div>
+            </div>
+            <Nav.Link className="collapse-close d-md-none" onClick={onCollapse}>
+              <FontAwesomeIcon icon={faTimes} />
+            </Nav.Link>
+          </div>
+          <Nav className="flex-column pt-3 pt-md-0">
+            <NavItem title="SlavebotSystems" link={Routes.Presentation.path} image={ReactHero} />
+
+            <NavItem title="Overview" link={Routes.DashboardOverview.path} icon={faChartPie} />
+            <NavItem title="Transactions" icon={faHandHoldingUsd} link={Routes.Transactions.path} />
+            <NavItem title="Settings" icon={faCog} link={Routes.Settings.path} />
+
+            <CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>
+              <NavItem title="Bootstrap Table" link={Routes.BootstrapTables.path} />
+            </CollapsableNavItem>
+
+            <CollapsableNavItem eventKey="examples/" title="Page Examples" icon={faFileAlt}>
+              <NavItem title="Sign In" link={Routes.Signin.path} />
+              <NavItem title="Sign Up" link={Routes.Signup.path} />
+              <NavItem title="Forgot password" link={Routes.ForgotPassword.path} />
+              <NavItem title="Reset password" link={Routes.ResetPassword.path} />
+              <NavItem title="Lock" link={Routes.Lock.path} />
+              <NavItem title="404 Not Found" link={Routes.NotFound.path} />
+              <NavItem title="500 Server Error" link={Routes.ServerError.path} />
+            </CollapsableNavItem>
+
+            <Dropdown.Divider className="my-3 border-indigo" />
+
+            <CollapsableNavItem eventKey="documentation/" title="Getting Started" icon={faBook}>
+              <NavItem title="Overview" link={Routes.DocsOverview.path} />
+              <NavItem title="Download" link={Routes.DocsDownload.path} />
+              <NavItem title="Quick Start" link={Routes.DocsQuickStart.path} />
+              <NavItem title="License" link={Routes.DocsLicense.path} />
+              <NavItem title="Folder Structure" link={Routes.DocsFolderStructure.path} />
+              <NavItem title="Build Tools" link={Routes.DocsBuild.path} />
+              <NavItem title="Changelog" link={Routes.DocsChangelog.path} />
+            </CollapsableNavItem>
+            <CollapsableNavItem eventKey="components/" title="Components" icon={faBoxOpen}>
+              <NavItem title="Accordion" link={Routes.Accordions.path} />
+              <NavItem title="Alerts" link={Routes.Alerts.path} />
+              <NavItem title="Badges" link={Routes.Badges.path} />
+              <NavItem title="Breadcrumbs" link={Routes.Breadcrumbs.path} />
+              <NavItem title="Buttons" link={Routes.Buttons.path} />
+              <NavItem title="Forms" link={Routes.Forms.path} />
+              <NavItem title="Modals" link={Routes.Modals.path} />
+              <NavItem title="Navbars" link={Routes.Navbars.path} />
+              <NavItem title="Navs" link={Routes.Navs.path} />
+              <NavItem title="Pagination" link={Routes.Pagination.path} />
+              <NavItem title="Popovers" link={Routes.Popovers.path} />
+              <NavItem title="Progress" link={Routes.Progress.path} />
+              <NavItem title="Tables" link={Routes.Tables.path} />
+              <NavItem title="Tabs" link={Routes.Tabs.path} />
+              <NavItem title="Toasts" link={Routes.Toasts.path} />
+              <NavItem title="Tooltips" link={Routes.Tooltips.path} />
+            </CollapsableNavItem>
+          </Nav>
+        </div>
+      </SimpleBar>
+    );
+  }
+
+
   const NavItem = (props) => {
     const { title, link, external, target, icon, image, badgeText, badgeBg = "secondary", badgeColor = "primary" } = props;
     const classNames = badgeText ? "d-flex justify-content-start align-items-center justify-content-between" : "";
@@ -66,89 +150,33 @@ export default (props = {}) => {
     );
   };
 
+  const [height, setHeight] = useState(0)
+  const navRef = useRef(null)
+  useEffect(() => {
+    setHeight(navRef.current.clientHeight)
+  }, []);
+
   return (
-    <>
-      <Navbar expand={false} collapseOnSelect variant="dark" className="navbar-theme-primary px-4 d-md-none">
-        <Navbar.Brand className="me-lg-5" as={Link} to={Routes.DashboardOverview.path}>
+    <Navbar ref={navRef} expand="lg" fixed="top" collapseOnSelect variant="dark" className="px-4 d-flex justify-content-end">
+        <Navbar.Brand className="me-lg-5" as={Link} to={Routes.Presentation.path}>
           <Image src={ReactHero} className="navbar-brand-light" />
+          SlavebotSystems
         </Navbar.Brand>
         <Navbar.Toggle as={Button} aria-controls="main-navbar" onClick={onCollapse}>
           <span className="navbar-toggler-icon" />
         </Navbar.Toggle>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <NavDropdown title="..." id="basic-nav-dropdown">
+              <MuiButton component={Link} variant="secondary" onClick={signOutUser} size="xs" to={Routes.Presentation.path} className="text-dark">
+                <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Sign Out
+              </MuiButton>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+        <CSSTransition timeout={300} in={show} classNames="sidebar-transition">
+        <Sidebar top={height} />
+        </CSSTransition>
       </Navbar>
-      <CSSTransition timeout={300} in={show} classNames="sidebar-transition">
-        <SimpleBar className={`collapse ${showClass} sidebar d-md-block bg-primary text-white`}>
-          <div className="sidebar-inner px-4 pt-3">
-            <div className="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
-              <div className="d-flex align-items-center">
-                <div className="user-avatar lg-avatar me-4">
-                  <Image src={ProfilePicture} className="card-img-top rounded-circle border-white" />
-                </div>
-                <div className="d-block">
-                  <h6>Hi, Jane</h6>
-                  <Button as={Link} variant="secondary" size="xs" to={Routes.Signin.path} className="text-dark">
-                    <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Sign Out
-                  </Button>
-                </div>
-              </div>
-              <Nav.Link className="collapse-close d-md-none" onClick={onCollapse}>
-                <FontAwesomeIcon icon={faTimes} />
-              </Nav.Link>
-            </div>
-            <Nav className="flex-column pt-3 pt-md-0">
-              <NavItem title="SlavebotSystems React" link={Routes.Presentation.path} image={ReactHero} />
-
-              <NavItem title="Overview" link={Routes.DashboardOverview.path} icon={faChartPie} />
-              <NavItem title="Transactions" icon={faHandHoldingUsd} link={Routes.Transactions.path} />
-              <NavItem title="Settings" icon={faCog} link={Routes.Settings.path} />
-
-              <CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>
-                <NavItem title="Bootstrap Table" link={Routes.BootstrapTables.path} />
-              </CollapsableNavItem>
-
-              <CollapsableNavItem eventKey="examples/" title="Page Examples" icon={faFileAlt}>
-                <NavItem title="Sign In" link={Routes.Signin.path} />
-                <NavItem title="Sign Up" link={Routes.Signup.path} />
-                <NavItem title="Forgot password" link={Routes.ForgotPassword.path} />
-                <NavItem title="Reset password" link={Routes.ResetPassword.path} />
-                <NavItem title="Lock" link={Routes.Lock.path} />
-                <NavItem title="404 Not Found" link={Routes.NotFound.path} />
-                <NavItem title="500 Server Error" link={Routes.ServerError.path} />
-              </CollapsableNavItem>
-
-              <Dropdown.Divider className="my-3 border-indigo" />
-
-              <CollapsableNavItem eventKey="documentation/" title="Getting Started" icon={faBook}>
-                <NavItem title="Overview" link={Routes.DocsOverview.path} />
-                <NavItem title="Download" link={Routes.DocsDownload.path} />
-                <NavItem title="Quick Start" link={Routes.DocsQuickStart.path} />
-                <NavItem title="License" link={Routes.DocsLicense.path} />
-                <NavItem title="Folder Structure" link={Routes.DocsFolderStructure.path} />
-                <NavItem title="Build Tools" link={Routes.DocsBuild.path} />
-                <NavItem title="Changelog" link={Routes.DocsChangelog.path} />
-              </CollapsableNavItem>
-              <CollapsableNavItem eventKey="components/" title="Components" icon={faBoxOpen}>
-                <NavItem title="Accordion" link={Routes.Accordions.path} />
-                <NavItem title="Alerts" link={Routes.Alerts.path} />
-                <NavItem title="Badges" link={Routes.Badges.path} />
-                <NavItem title="Breadcrumbs" link={Routes.Breadcrumbs.path} />
-                <NavItem title="Buttons" link={Routes.Buttons.path} />
-                <NavItem title="Forms" link={Routes.Forms.path} />
-                <NavItem title="Modals" link={Routes.Modals.path} />
-                <NavItem title="Navbars" link={Routes.Navbars.path} />
-                <NavItem title="Navs" link={Routes.Navs.path} />
-                <NavItem title="Pagination" link={Routes.Pagination.path} />
-                <NavItem title="Popovers" link={Routes.Popovers.path} />
-                <NavItem title="Progress" link={Routes.Progress.path} />
-                <NavItem title="Tables" link={Routes.Tables.path} />
-                <NavItem title="Tabs" link={Routes.Tabs.path} />
-                <NavItem title="Toasts" link={Routes.Toasts.path} />
-                <NavItem title="Tooltips" link={Routes.Tooltips.path} />
-              </CollapsableNavItem>
-            </Nav>
-          </div>
-        </SimpleBar>
-      </CSSTransition>
-    </>
   );
 };

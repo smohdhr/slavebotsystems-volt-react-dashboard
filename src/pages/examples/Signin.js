@@ -34,7 +34,7 @@ export default () => {
   const username = useRef(null);
   const password = useRef(null);
 
-  const handleSubmit = (e) => {
+  const signInUser = (e) => {
     e.preventDefault();
     const u = username.current.value;
     const p = password.current.value;
@@ -42,7 +42,7 @@ export default () => {
     const encrypted = encrypt(data);
     //console.log(`setting token = ${encrypted}`);
     sessionStorage.setItem('user-token', encrypted);
-    location.assign(getAbsoluteUrl(Routes.DashboardOverview.path));
+    location.href = getAbsoluteUrl(Routes.DashboardOverview.path);
   };
   return (
     <main>
@@ -59,7 +59,7 @@ export default () => {
                 <div className="text-center text-md-center mb-4 mt-md-0">
                   <h3 className="mb-0">Sign in to our platform</h3>
                 </div>
-                <Form className="mt-4" onSubmit={ handleSubmit }>
+                <Form className="mt-4" onSubmit={signInUser}>
                   <Form.Group id="email" className="mb-4">
                     <Form.Label>Your Email</Form.Label>
                     <InputGroup>
