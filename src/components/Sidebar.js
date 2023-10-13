@@ -14,6 +14,7 @@ import ReactHero from "../assets/img/technologies/react-hero-logo.svg";
 import ProfilePicture from "../assets/img/team/profile-picture-3.jpg";
 
 import Footer from "../components/Footer";
+import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 
 function signOutUser() {
   sessionStorage.removeItem('user-token');
@@ -163,9 +164,9 @@ function NavBar(props) {
       <Navbar.Toggle as={Button} aria-controls="main-navbar" onClick={onCollapse}>
         <span className="navbar-toggler-icon" />
       </Navbar.Toggle>
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
-          <NavDropdown title="..." id="basic-nav-dropdown">
+      <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
+        <Nav>
+          <NavDropdown title={<span>Actions<FontAwesomeIcon icon={faCaretSquareDown} className="me-2" /></span>} id="basic-nav-dropdown">
             <MuiButton component={Link} variant="secondary" onClick={signOutUser} size="xs" to={Routes.Presentation.path} className="text-dark">
               <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Sign Out
             </MuiButton>
