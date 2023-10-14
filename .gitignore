@@ -4,5 +4,6 @@ server-build/
 .vs/
 bin/
 obj/
+package-lock.json
 .DS_Store
 
