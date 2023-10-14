@@ -7,6 +7,7 @@ import Render from './src/render';
 
 const HOST = process.env.SERVER_HOST || "0.0.0.0";
 const PORT = process.env.SERVER_PORT || 3000;
+const APP_BASE = "/webmachine";
 
 function reactHandler(req, res) {
   //console.log(`handling request ${req.url}`);
@@ -34,16 +35,16 @@ const static_serverbuild_assets_path = path.join(__dirname, 'build', 'assets');
 const static_serverbuild_img_path = path.join(__dirname, 'build', 'assets', 'img');
 
 // midleware
-app.use('/public', express.static(static_public_path));
-app.use('/assets', express.static(static_serverbuild_assets_path));
-app.use('/img', express.static(static_serverbuild_img_path));
-app.use('/build', express.static(static_serverbuild_path));
+app.use(APP_BASE+'/public', express.static(static_public_path));
+app.use(APP_BASE+'/assets', express.static(static_serverbuild_assets_path));
+app.use(APP_BASE+'/img', express.static(static_serverbuild_img_path));
+app.use(APP_BASE+'/build', express.static(static_serverbuild_path));
 
 Object.values(Routes).forEach((value) => {
   app.get(value.path, reactHandler);
 });
 
-app.get('/db/*', dbHandler);
+app.get(APP_BASE+'/db/*', dbHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on ${HOST} at port ${PORT}`);
