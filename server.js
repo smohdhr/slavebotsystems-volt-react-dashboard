@@ -41,7 +41,7 @@ app.use(APP_BASE+'/img', express.static(static_serverbuild_img_path));
 app.use(APP_BASE+'/build', express.static(static_serverbuild_path));
 
 Object.values(Routes).forEach((value) => {
-  app.get(value.path, reactHandler);
+  app.get(APP_BASE+value.path, reactHandler);
 });
 
 app.get(APP_BASE+'/db/*', dbHandler);
