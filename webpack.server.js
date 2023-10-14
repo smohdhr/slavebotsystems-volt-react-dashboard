@@ -17,7 +17,7 @@ function getConfig(file) {
     },
     output: {
       path: path.resolve(__dirname, 'build'),
-      publicPath: '/build/',
+      publicPath: '/webmachine/build/',
       filename: '[name].mjs',
       module: true,
       chunkFormat: 'module',
