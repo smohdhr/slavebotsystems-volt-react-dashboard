@@ -6,7 +6,7 @@ import { Routes } from './src/routes';
 import Render from './src/render';
 
 const HOST = process.env.SERVER_HOST || "0.0.0.0";
-const PORT = process.env.SERVER_PORT || 3106;
+const PORT = process.env.SERVER_PORT || 3000;
 
 function reactHandler(req, res) {
   //console.log(`handling request ${req.url}`);
