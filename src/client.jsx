@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ReactProvider } from './context';
 import App from './app';
 
 var module = {
@@ -8,8 +9,11 @@ var module = {
 global.module = module;
 
 function hydrate() {
-  let elem = document.getElementById("root");
-  let loc = elem.getAttribute("location");
-  ReactDOM.hydrate(<App location={loc} hydrate={true} />, elem);
+  const elem = document.getElementById("root");
+  ReactDOM.hydrate(
+      <ReactProvider>
+        <App hydrate={true} />
+      </ReactProvider> 
+    , elem);
 }
 hydrate();

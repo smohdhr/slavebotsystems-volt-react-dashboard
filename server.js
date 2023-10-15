@@ -5,13 +5,16 @@ import express from 'express';
 import { Routes } from './src/routes';
 import Render from './src/render';
 
-const HOST = process.env.SERVER_HOST || "0.0.0.0";
+const HOST = process.env.SERVER_HOST || '0.0.0.0';
 const PORT = process.env.SERVER_PORT || 3000;
-const APP_BASE = "/webmachine";
+const BASE_PATH = '/webmachine';
 
 function reactHandler(req, res) {
   //console.log(`handling request ${req.url}`);
-  let content = Render({location: req.url});
+  let content = Render({
+    basename: BASE_PATH,
+    location: req.url
+  });
   if (content == null) {
     res.status(500).send('Error occured: ' + err);
   } else {
@@ -27,6 +30,7 @@ function dbHandler(req, res) {
 }
 
 const app = express();
+const router = express.Router();
 
 // dirname = C:\msys64\home\Hussain\work\react\volt-react-dashboard
 const static_public_path = path.join(__dirname, 'public');
@@ -35,16 +39,18 @@ const static_serverbuild_assets_path = path.join(__dirname, 'build', 'assets');
 const static_serverbuild_img_path = path.join(__dirname, 'build', 'assets', 'img');
 
 // midleware
-app.use(APP_BASE+'/public', express.static(static_public_path));
-app.use(APP_BASE+'/assets', express.static(static_serverbuild_assets_path));
-app.use(APP_BASE+'/img', express.static(static_serverbuild_img_path));
-app.use(APP_BASE+'/build', express.static(static_serverbuild_path));
+router.use('/public', express.static(static_public_path));
+router.use('/assets', express.static(static_serverbuild_assets_path));
+router.use('/img', express.static(static_serverbuild_img_path));
+router.use('/build', express.static(static_serverbuild_path));
 
 Object.values(Routes).forEach((value) => {
-  app.get(APP_BASE+value.path, reactHandler);
+  router.get(value.path, reactHandler);
 });
 
-app.get(APP_BASE+'/db/*', dbHandler);
+router.get('/db/*', dbHandler);
+
+app.use(BASE_PATH, router);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on ${HOST} at port ${PORT}`);

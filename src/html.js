@@ -5,7 +5,7 @@ import React from 'react';
  * give control of the initial page to the jsx engine
  */
 export default function HtmlWithBody(props) {
-
+  const code = 'window.APP_CONTEXT=' + JSON.stringify(props.global) + ';';
   return (
     <html lang="en">
       <head>
@@ -15,7 +15,7 @@ export default function HtmlWithBody(props) {
         <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
-        <link rel="stylesheet" type="text/css" href="/build/client.css" />
+        <link rel="stylesheet" type="text/css" href="/webmachine/build/client.css" />
         <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
         <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#262b40" />
         <meta name="msapplication-TileColor" content="#ff0000" />
@@ -42,8 +42,9 @@ export default function HtmlWithBody(props) {
 
       <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
+        <script dangerouslySetInnerHTML={{ __html: code }} />
         {props.children}
-        <script src="/build/client.mjs" type="module" defer></script>
+        <script src="/webmachine/build/client.mjs" type="module" defer></script>
       </body>
     </html>
   );

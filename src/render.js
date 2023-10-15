@@ -11,10 +11,10 @@ import App from './app';
  */
 function AppContainer(props) {
   return (
-    <HtmlWithBody> 
+    <HtmlWithBody global={{hydrate: false, ...props}}>
       <div id="root">
         <ReactProvider>
-          <App location={props.location} />
+          <App hydrate={false}/>
         </ReactProvider>
       </div>
     </HtmlWithBody>
@@ -23,10 +23,10 @@ function AppContainer(props) {
 
 export default function Render(props) {
   const content = ReactDOMServer.renderToString(
-    <AppContainer location={props.location} />
+    <AppContainer {...props} />
   );
   if (content == null) {
     return null;
   }
-  return '<!DOCTYPE html>' + content.replace(/%PUBLIC_URL%/g, '/public');
+  return '<!DOCTYPE html>' + content.replace(/%PUBLIC_URL%/g, '/webmachine/public');
 }

@@ -1,5 +1,5 @@
 
-import React, { useState, forwardRef } from 'react';
+import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Col, Row, Card, Button, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
@@ -9,7 +9,13 @@ import Code from "./Code";
 
 import themeStyle from "../assets/syntax-themes/ghcolors.json";
 
-const ForwardFontAwesomeIcon = forwardRef((props, ref) => { return <FontAwesomeIcon ref={ref} icon={faQuestionCircle} className="me-2" />; });
+const ForwardFontAwesomeIcon = React.forwardRef((props, ref) => {
+  return (
+    <div ref={ref}>
+      <FontAwesomeIcon icon={faQuestionCircle} className="me-2" />
+    </div>
+  );
+});
 
 export default (props) => {
   const { language = "jsx", scope = {}, imports = null, maxHeight = 'none' } = props;

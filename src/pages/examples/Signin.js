@@ -25,10 +25,9 @@ function encrypt(utf8message) {
 }
 
 function getAbsoluteUrl(url) {
-  return location.protocol + '//' + location.host + url;
+  const basename = '/webmachine';
+  return location.protocol + '//' + location.host + basename + url;
 }
-
-
 
 export default () => {
   const username = useRef(null);

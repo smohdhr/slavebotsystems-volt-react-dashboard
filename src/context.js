@@ -6,7 +6,7 @@ const ReactProvider = ({ children }) => {
   const [stateInContext, setStateInContext] = useState();
 
   return (
-    <ReactContext.Provider value={{ stateInContext, setStateInContext }}>
+    <ReactContext.Provider value={{ state: stateInContext, setState: setStateInContext }}>
       {children}
     </ReactContext.Provider>
   );
@@ -20,4 +20,12 @@ const useReactContext = () => {
   return context;
 };
 
-export { ReactProvider, useReactContext };
+function getGlobal(key) {
+  return (window.APP_CONTEXT)[key];
+}
+
+function setGlobal(key, value) {
+  (window.APP_CONTEXT)[key] = value;
+}
+
+export { ReactProvider, useReactContext, getGlobal, setGlobal };

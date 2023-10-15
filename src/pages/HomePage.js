@@ -53,7 +53,8 @@ import Toasts from "./components/Toasts";
 import "../scss/volt.scss"
 
 function getAbsoluteUrl(url) {
-  return location.protocol + '//' + location.host + url;
+  const basename = '/webmachine';
+  return location.protocol + '//' + location.host + basename + url;
 }
 
 function isUserTokenValid() {
@@ -86,8 +87,6 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
 };
 
 const RouteWithSidebar = ({ component: Component, ...rest }) => {
-  const [loaded, setLoaded] = useState(false);
-
   const { data, status } = useQuery("userTokenValid", isUserTokenValid);
   switch (status) {
     case "loading":
